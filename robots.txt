@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leidyroman.com/sitemap.xml
