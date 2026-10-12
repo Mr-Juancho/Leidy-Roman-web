@@ -259,7 +259,7 @@ section[id]{scroll-margin-top:calc(var(--hd) + env(safe-area-inset-top,0px))}
 .news__track::-webkit-scrollbar{display:none}
 .ncard{scroll-snap-align:start;display:flex;flex-direction:column;text-decoration:none;color:var(--t1);min-width:0}
 .ncard figure{position:relative;aspect-ratio:357/300;overflow:hidden;background:var(--stone)}
-.ncard img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .8s var(--ease),transform 1.2s var(--out)}
+.ncard img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--out)}
 .ncard:hover img{filter:none;transform:scale(1.03)}
 .ncard__bar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:11px 24px;background:rgba(44,43,41,.94);color:#fff;font-size:14.5px}
 .ncard h3{flex:1;font:500 16px/1.5 var(--sans);padding:26px 24px 34px}
@@ -404,21 +404,17 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 /* hero tiles */
 .treat__media img{transition:opacity 1.1s var(--ease),transform 5s linear,filter .35s}
-.treat:hover .treat__media img{filter:grayscale(1)}
 .meet img{transition:transform 1.2s var(--out),filter .35s}
-.meet:hover img{transform:translateX(-50%);filter:grayscale(1)}
 
-/* paired panels: grayscale, deep zoom and arrow on hover */
+/* paired panels: deep zoom and arrow on hover */
 .duo__card{overflow:hidden;transition:filter .35s}
 .duo__card img{transition:transform .9s cubic-bezier(.2,.6,.2,1)}
-.duo__card:hover,.duo__card:focus-visible{filter:grayscale(1)}
 .duo__card:hover img,.duo__card:focus-visible img{transform:scale(1.25)}
 .duo__lab svg{opacity:0;transform:translateX(-12px);transition:opacity .25s ease-out,transform .25s ease-out}
 .duo__card:hover .duo__lab svg,.duo__card:focus-visible .duo__lab svg{opacity:1;transform:none}
 @media (hover:none){.duo__lab svg{opacity:1;transform:none}}
 
 @media (min-width:980px){.proof__in{height:144px;min-height:0}.proof__thumbs{height:144px}}
-@media (hover:hover){.proof__in:hover .proof__thumbs img{filter:grayscale(1)}}
 
 /* technology row: twelve detailed icons at a calm pace */
 .tech__track{animation-duration:96s}
@@ -434,11 +430,10 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .tcard figure{position:relative}
 .tcard figure::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,0) 35%,rgba(0,0,0,.45));pointer-events:none}
 .tcard img{transition:transform 1.2s var(--out),filter .35s}
-.tcard:hover img{filter:grayscale(1)}
 
-/* story blocks: black and white photos, color on hover, wipe on entry */
-.lr__fig img{transition:filter .5s ease-out}
-@media (hover:hover){.lr__fig img{filter:grayscale(1)}.lr__fig:hover img{filter:none}}
+/* story blocks: color photos that lean in on hover, wipe on entry */
+.lr__fig img{transition:transform 1.2s var(--out)}
+@media (hover:hover){.lr__fig:hover img{transform:scale(1.03)}}
 .wipe{clip-path:inset(0 0 0 0);transition:clip-path 1.3s cubic-bezier(.77,0,.18,1)}
 .js .wipe:not(.in){clip-path:inset(0 34% 0 0)}
 .prog{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.22);width:100%;max-width:520px}
@@ -452,7 +447,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .ncard figure::after{content:"";position:absolute;inset:0;background:rgba(19,19,19,.1);transition:opacity .3s ease-in-out;pointer-events:none}
 .ncard__bar{z-index:1}
 .ncard img{transition:transform .3s ease-in-out,filter .3s ease-in-out}
-.ncard:hover img{filter:grayscale(1);transform:scale(1.05)}
+.ncard:hover img{transform:scale(1.05)}
 .ncard:hover figure::after{opacity:0}
 .ncard__go svg{transition:transform .3s ease-in-out}
 .ncard:hover .ncard__go svg{transform:translateX(12px)}
@@ -561,7 +556,8 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 /* specialties: two slow-motion clips over the black hero, then the technique row */
 .duo__card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.6,.2,1)}
-.duo__card:hover video,.duo__card:focus-visible video{transform:scale(1.12)}
+.duo__card:focus-visible video{transform:scale(1.12)}
+@media (hover:hover){.duo__card:hover video{transform:scale(1.12)}}
 .duo__card::after{z-index:1}
 .duo__lab{z-index:2}
 .spec .tech{background:var(--silk)}
@@ -666,6 +662,9 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 /* hero meet tile: the cream portrait sits higher and larger */
 .meet img{top:29%;height:118%}
 @media (max-width:760px){.meet img{top:33%;height:112%}}
+/* v7.3 · Leidy steps forward when the pointer rests on her tile, always in color */
+.meet img{transform-origin:50% 100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.meet:hover img,.meet:focus-visible img{transform:translateX(-50%) scale(1.06)}}
 /* v7.2 · navbar with the face emblem and a three-bar menu; contact lives in the menu; a smaller seal */
 .hd .logo{width:36px;height:54px;color:var(--gold-soft);transition:color .35s}
 .hd.is-scrolled .logo{color:var(--gold-deep)}
@@ -676,20 +675,84 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .bars i:nth-child(2){width:70%;justify-self:end}
 .hd__menu:hover .bars i:nth-child(2){transform:scaleX(1.43);transform-origin:right}
 @media (max-width:1079px){.hd .logo{width:30px;height:46px}}
-.menu{overflow-y:auto}
+/* v7.3 · menu: one top bar that never shrinks (language, face, close) and calm, centered content on phones */
+.menu{height:100%;height:100dvh;max-height:100%;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain}
+.menu__top{position:sticky;top:0;z-index:2;flex:none;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:auto;min-height:var(--hd);margin-top:0;padding-top:env(safe-area-inset-top,0px);background:var(--silk)}
+.menu__top .lang{justify-self:start;margin-left:-8px}
+.menu__top .lang button{padding:14px 8px}
 .menu__top .logo{display:block;width:30px;height:46px;color:var(--gold-deep)}
 .menu__top .logo svg{width:100%;height:100%;display:block}
-.menu__body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:24px 56px;align-items:center;padding-block:12px}
+.menu__top .x{justify-self:end;margin-right:-10px;border:0;border-radius:0;background:none;transition:color .3s}
+.menu__top .x:hover{color:var(--gold-deep)}
+.menu__top .x svg{width:18px;height:18px}
+.menu__body{flex:none;margin-block:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:24px 56px;align-items:center;padding-block:clamp(12px,3vh,32px)}
 .menu__body nav{display:grid;gap:2px}
 .menu__contact{display:grid;gap:14px;align-content:center;padding-left:clamp(0px,3vw,40px);border-left:1px solid var(--hair)}
 .menu__contact .kick{margin-bottom:6px}
+.mc__list,.mc__social{display:grid;gap:14px}
 .menu__contact a{display:inline-flex;align-items:flex-start;gap:12px;color:var(--t1);text-decoration:none;font-size:15px;line-height:1.45;width:max-content;max-width:100%;overflow-wrap:anywhere;transition:color .3s}
 .menu__contact a:hover{color:var(--gold-deep)}
 .menu__contact svg{width:18px;height:18px;flex:none;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-@media (min-width:761px){.menu__foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.menu__foot .lang{margin:0 auto 0 0}.menu__foot .btn-ink,.menu__foot .btn-line{width:auto}}
-@media (max-width:760px){.menu__body{grid-template-columns:1fr;align-content:center}.menu__contact{border-left:0;border-top:1px solid var(--hair);padding:20px 0 0}.menu__contact a{font-size:14px}}
+.menu__foot{flex:none}
+@media (min-width:761px){.menu__foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.menu__foot .btn-ink,.menu__foot .btn-line{width:auto}}
+@media (max-width:760px){
+  .menu__body{grid-template-columns:1fr;justify-items:center;text-align:center;gap:0;padding-block:clamp(8px,2.4dvh,24px)}
+  .menu__body nav{justify-items:center;gap:0}
+  .menu nav a{font-size:clamp(24px,min(8.4vw,4.4dvh),40px);line-height:1.2}
+  .menu__contact{justify-items:center;gap:10px;width:100%;border:0;padding:0;margin-top:clamp(16px,2.8dvh,28px)}
+  .menu__contact::before{content:"";width:40px;height:1px;background:var(--gold);margin-bottom:clamp(8px,1.6dvh,14px)}
+  .menu__contact .kick{margin:0;font-size:11px}
+  .mc__list{justify-items:center;gap:3px}
+  .mc__list a{display:block;width:auto;font-size:14px;line-height:1.5}
+  .mc__list svg{display:none}
+  .mc__social{display:flex;justify-content:center;gap:26px;margin-top:4px}
+  .mc__social a{align-items:center;gap:8px;font-size:13.5px}
+  .mc__social svg{margin-top:0}
+  .menu__foot{gap:8px;padding-block:clamp(12px,2dvh,18px) calc(16px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:760px) and (max-height:600px){
+  .menu__contact .kick{display:none}
+  .menu__contact::before{margin-bottom:4px}
+}
 .badge{width:clamp(84px,7.4vw,110px)}
 .badge .ring text{font-size:10.4px;letter-spacing:.2em}
+/* v7.3 · responsive pass: small phones, tablets and small laptops */
+@media (max-width:419px){
+  .hmain{aspect-ratio:1/1}
+  .badge{width:78px}
+  .badge .ring text{font-size:11px}
+}
+@media (max-width:359px){.hcopy h1{font-size:28px}}
+/* treatment drawer: full visible height on phones and buttons that wrap instead of running off the edge */
+.drawer{height:100dvh;max-height:100dvh}
+.drawer__foot{flex-wrap:wrap}
+.drawer__foot a{flex:1 1 auto;min-width:0;text-align:center}
+@media (min-width:700px) and (max-width:979px){
+  .rv__grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center}
+  .rv__fig{max-width:none}
+  .rv__q{min-height:clamp(250px,34vw,320px)}
+  .mi{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}
+  .mi__fig{max-width:none}
+  .mi__t{font-size:clamp(36px,5.6vw,50px)}
+  .mi__copy .btn-white{justify-self:start}
+  .cab__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+.ft__grid{grid-template-columns:minmax(0,.9fr) minmax(0,.85fr) minmax(0,1.25fr) minmax(0,1.1fr)}
+.ft__col,.menu__contact,.mc__list{grid-template-columns:minmax(0,1fr)}
+.ft__status{max-width:100%}
+@media (min-width:761px) and (max-width:1219px){
+  .ft__grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr) minmax(0,1fr);gap:48px clamp(24px,3vw,40px)}
+  .ft__brand{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px}
+}
+@media (max-width:760px){
+  .asub{column-gap:20px}
+  .asub button{padding:8px 0;font-size:14.5px;line-height:1.4}
+  .ft__col{gap:2px}
+  .ft__col h3{margin-bottom:10px}
+  .ft__col a{padding-block:8px}
+  .ft__hours{margin-top:10px}
+  .ft__bottom a{display:inline-block;padding-block:8px}
+}
 @media (prefers-reduced-motion:reduce){.js .st:not(.in) .sa,.js .st:not(.in) .sb{transform:none;opacity:1}}
 </style>
 </head>
@@ -968,7 +1031,8 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 <dialog class="menu" id="menu" aria-label="Menú">
   <div class="wrap menu__top">
-    <a class="logo" href="#inicio" data-close aria-label="Leidy Román Beauty"><svg aria-hidden="true"><use href="#i-emblem"/></svg></a>
+    <div class="lang" role="group" data-i18n-aria="lang" aria-label="Idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><i></i><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    <a class="logo" href="#inicio" data-close autofocus aria-label="Leidy Román Beauty"><svg aria-hidden="true"><use href="#i-emblem"/></svg></a>
     <button type="button" class="x" data-close data-i18n-aria="close" aria-label="Cerrar"><svg><use href="#i-x"/></svg></button>
   </div>
   <div class="wrap menu__body">
@@ -983,15 +1047,18 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
   </nav>
   <div class="menu__contact">
     <p class="kick" data-i18n="ft.contact">Contacto</p>
-    <a class="js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>(617) 548‑2795</span></a>
-    <a target="_blank" rel="noopener" href="https://www.instagram.com/leidyromanbeauty/"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>@leidyromanbeauty</span></a>
-    <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Leidyromanbeauty/61551812369217/"><svg aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook</span></a>
-    <a href="mailto:leidyromanbeauty@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>leidyromanbeauty@gmail.com</span></a>
-    <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=941%20N%20Pleasantburg%20Dr%20Suite%20C%2C%20Greenville%2C%20SC%2029607"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>941 N Pleasantburg Dr, Suite C<br>Greenville, SC 29607</span></a>
+    <div class="mc__list">
+      <a class="js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>(617) 548‑2795</span></a>
+      <a href="mailto:leidyromanbeauty@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>leidyromanbeauty@gmail.com</span></a>
+      <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=941%20N%20Pleasantburg%20Dr%20Suite%20C%2C%20Greenville%2C%20SC%2029607"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>941 N Pleasantburg Dr, Suite C<br>Greenville, SC 29607</span></a>
+    </div>
+    <div class="mc__social">
+      <a target="_blank" rel="noopener" href="https://www.instagram.com/leidyromanbeauty/"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>@leidyromanbeauty</span></a>
+      <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Leidyromanbeauty/61551812369217/"><svg aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook</span></a>
+    </div>
   </div>
   </div>
   <div class="wrap menu__foot">
-    <div class="lang" role="group" data-i18n-aria="lang" aria-label="Idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><i></i><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     <a class="btn-ink js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795" data-i18n="hero.wa">Escríbeme por WhatsApp</a>
     <a class="btn-line js-booksy" target="_blank" rel="noopener" href="https://leidyromanbeauty92.booksy.com/a/" data-i18n="d.book">Agendar en Booksy</a>
   </div>
