@@ -666,6 +666,30 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 /* hero meet tile: the cream portrait sits higher and larger */
 .meet img{top:29%;height:118%}
 @media (max-width:760px){.meet img{top:33%;height:112%}}
+/* v7.2 · navbar with the face emblem and a three-bar menu; contact lives in the menu; a smaller seal */
+.hd .logo{width:36px;height:54px;color:var(--gold-soft);transition:color .35s}
+.hd.is-scrolled .logo{color:var(--gold-deep)}
+.hd .logo svg{width:100%;height:100%;display:block}
+.hd__menu{display:inline-grid!important;place-items:center;width:44px;height:44px;margin-right:-10px;padding:0}
+.bars{display:grid;gap:6px;width:24px}
+.bars i{display:block;height:1.5px;background:currentColor;transition:transform .4s var(--out)}
+.bars i:nth-child(2){width:70%;justify-self:end}
+.hd__menu:hover .bars i:nth-child(2){transform:scaleX(1.43);transform-origin:right}
+@media (max-width:1079px){.hd .logo{width:30px;height:46px}}
+.menu{overflow-y:auto}
+.menu__top .logo{display:block;width:30px;height:46px;color:var(--gold-deep)}
+.menu__top .logo svg{width:100%;height:100%;display:block}
+.menu__body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:24px 56px;align-items:center;padding-block:12px}
+.menu__body nav{display:grid;gap:2px}
+.menu__contact{display:grid;gap:14px;align-content:center;padding-left:clamp(0px,3vw,40px);border-left:1px solid var(--hair)}
+.menu__contact .kick{margin-bottom:6px}
+.menu__contact a{display:inline-flex;align-items:flex-start;gap:12px;color:var(--t1);text-decoration:none;font-size:15px;line-height:1.45;width:max-content;max-width:100%;overflow-wrap:anywhere;transition:color .3s}
+.menu__contact a:hover{color:var(--gold-deep)}
+.menu__contact svg{width:18px;height:18px;flex:none;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:761px){.menu__foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.menu__foot .lang{margin:0 auto 0 0}.menu__foot .btn-ink,.menu__foot .btn-line{width:auto}}
+@media (max-width:760px){.menu__body{grid-template-columns:1fr;align-content:center}.menu__contact{border-left:0;border-top:1px solid var(--hair);padding:20px 0 0}.menu__contact a{font-size:14px}}
+.badge{width:clamp(84px,7.4vw,110px)}
+.badge .ring text{font-size:10.4px;letter-spacing:.2em}
 @media (prefers-reduced-motion:reduce){.js .st:not(.in) .sa,.js .st:not(.in) .sb{transform:none;opacity:1}}
 </style>
 </head>
@@ -712,12 +736,11 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
       <a href="#leidy" data-i18n="nav.about">Sobre Leidy</a>
       <a href="#historia" data-i18n="nav.academy">Academy</a>
     </nav>
-    <a class="logo" href="#inicio" aria-label="Leidy Román Beauty"><img class="lg-light" src="media/logo-inverso-180.png" alt="" width="50" height="50"><img class="lg-dark" src="media/logo-positivo-180.png" alt="" width="50" height="50"></a>
+    <a class="logo" href="#inicio" aria-label="Leidy Román Beauty"><svg aria-hidden="true"><use href="#i-emblem"/></svg></a>
     <div class="hd__right">
-      <a class="hd__contact js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795" data-i18n-aria="nav.contact" aria-label="Escríbeme por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
       <button type="button" class="hd__lang" id="langBtn" lang="en" aria-label="Switch to English">English</button>
       <button type="button" class="hd__cta js-book" data-i18n="nav.book">Agendar</button>
-      <button type="button" class="hd__menu" id="burger" aria-haspopup="dialog" data-i18n="nav.menuBtn">Menú</button>
+      <button type="button" class="hd__menu" id="burger" aria-haspopup="dialog" data-i18n-aria="nav.menuBtn" aria-label="Menú"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
     </div>
   </div>
 </header>
@@ -945,10 +968,11 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 <dialog class="menu" id="menu" aria-label="Menú">
   <div class="wrap menu__top">
-    <a class="logo" href="#inicio" data-close><img src="media/logo-positivo-180.png" alt="" width="40" height="40"></a>
+    <a class="logo" href="#inicio" data-close aria-label="Leidy Román Beauty"><svg aria-hidden="true"><use href="#i-emblem"/></svg></a>
     <button type="button" class="x" data-close data-i18n-aria="close" aria-label="Cerrar"><svg><use href="#i-x"/></svg></button>
   </div>
-  <nav class="wrap">
+  <div class="wrap menu__body">
+  <nav data-i18n-aria="nav.aria" aria-label="Principal">
     <a href="#tratamientos" data-close data-area="0" data-i18n="nav.postop">Postoperatorio</a>
     <a href="#tratamientos" data-close data-area="1" data-i18n="nav.body">Corporales</a>
     <a href="#tratamientos" data-close data-area="2" data-i18n="nav.facial">Faciales</a>
@@ -957,6 +981,15 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
     <a href="#historia" data-close data-i18n="nav.academy">Academy</a>
     <a href="#opiniones" data-close data-i18n="nav.reviews">Opiniones</a>
   </nav>
+  <div class="menu__contact">
+    <p class="kick" data-i18n="ft.contact">Contacto</p>
+    <a class="js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>(617) 548‑2795</span></a>
+    <a target="_blank" rel="noopener" href="https://www.instagram.com/leidyromanbeauty/"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>@leidyromanbeauty</span></a>
+    <a target="_blank" rel="noopener" href="https://www.facebook.com/people/Leidyromanbeauty/61551812369217/"><svg aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook</span></a>
+    <a href="mailto:leidyromanbeauty@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>leidyromanbeauty@gmail.com</span></a>
+    <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=941%20N%20Pleasantburg%20Dr%20Suite%20C%2C%20Greenville%2C%20SC%2029607"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>941 N Pleasantburg Dr, Suite C<br>Greenville, SC 29607</span></a>
+  </div>
+  </div>
   <div class="wrap menu__foot">
     <div class="lang" role="group" data-i18n-aria="lang" aria-label="Idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><i></i><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     <a class="btn-ink js-wa" target="_blank" rel="noopener" href="https://wa.me/16175482795" data-i18n="hero.wa">Escríbeme por WhatsApp</a>
@@ -1129,7 +1162,7 @@ const AREAS = [
  {n:{es:'Maquillaje',en:'Makeup'}, img:'media/leidy-stand-1080.webp', pos:'50% 24%', cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
 ];
 const TEAM = [
- {img:'retrato-azul', pos:'50% 30%', h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Licencia de Carolina del Sur, verificable en el registro público del SC LLR.',en:'South Carolina license, verifiable in the SC LLR public registry.'}, href:'https://verify.llronline.com/LicLookup/LookupMain.aspx'},
+ {img:'retrato-azul', pos:'50% 30%', h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
  {img:'certificado', pos:'50% 40%', h:{es:'Formación clínica',en:'Clinical training'}, d:{es:'Medical Assistant y Phlebotomy Technician: higiene, seguridad y protocolos claros en cada sesión.',en:'Medical Assistant and Phlebotomy Technician: hygiene, safety and clear protocols in every session.'}},
  {img:'laser-leidy', pos:'50% 32%', h:{es:'Especialización',en:'Advanced training'}, d:{es:'Capacitaciones en estética facial, corporal, postoperatoria y aparatología avanzada. Y sigo estudiando.',en:'Training in facial, body and post‑op care and advanced equipment. And I keep learning.'}},
  {img:'leidy-habla', pos:'50% 34%', h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
