@@ -15,14 +15,14 @@
 <meta property="og:title" content="Leidy Román Beauty · Greenville, SC">
 <meta property="og:description" content="Tratamientos corporales, recuperación postoperatoria y estética facial avanzada en Greenville, SC, con Leidy Román, esteticista licenciada. Atención en español e inglés.">
 <meta property="og:url" content="https://leidyroman.com/">
-<meta property="og:image" content="https://leidyroman.com/media/og-logo-dorado.jpg">
+<meta property="og:image" content="https://leidyroman.com/media/og-ultimate.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_US">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://leidyroman.com/media/og-logo-dorado.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BeautySalon", "name": "Leidy Román Beauty", "alternateName": "LR Beauty Aesthetic", "url": "https://leidyroman.com/", "image": "https://leidyroman.com/media/og-logo-dorado.jpg", "logo": "https://leidyroman.com/icon-512.png", "telephone": "+1-617-548-2795", "email": "leidyromanbeauty@gmail.com", "priceRange": "$$", "address": {"@type": "PostalAddress", "streetAddress": "941 N Pleasantburg Dr, Suite C", "addressLocality": "Greenville", "addressRegion": "SC", "postalCode": "29607", "addressCountry": "US"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:30"}], "knowsLanguage": ["es", "en"], "sameAs": ["https://www.instagram.com/leidyromanbeauty/", "https://www.facebook.com/people/Leidyromanbeauty/61551812369217/", "https://leidyromanbeauty92.booksy.com/a/"]}</script>
+<meta name="twitter:image" content="https://leidyroman.com/media/og-ultimate.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BeautySalon", "name": "Leidy Román Beauty", "alternateName": "LR Beauty Aesthetic", "url": "https://leidyroman.com/", "image": "https://leidyroman.com/media/og-ultimate.jpg", "logo": "https://leidyroman.com/icon-512.png", "telephone": "+1-617-548-2795", "email": "leidyromanbeauty@gmail.com", "priceRange": "$$", "address": {"@type": "PostalAddress", "streetAddress": "941 N Pleasantburg Dr, Suite C", "addressLocality": "Greenville", "addressRegion": "SC", "postalCode": "29607", "addressCountry": "US"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:30"}], "knowsLanguage": ["es", "en"], "sameAs": ["https://www.instagram.com/leidyromanbeauty/", "https://www.facebook.com/people/Leidyromanbeauty/61551812369217/", "https://leidyromanbeauty92.booksy.com/a/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap">
@@ -795,6 +795,25 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
   .ft__bottom{flex-direction:column;align-items:flex-start;gap:2px;padding-block:20px 30px}
 }
 img.lq,video.lq{background-size:cover;background-position:center;background-repeat:no-repeat}
+
+/* Final studio portraits: preserve the head, hands and original white backdrop. */
+.meet{background:#fff}
+.meet img{top:25%;left:48%;height:78%;width:auto;max-width:100%;object-fit:contain;object-position:center bottom}
+.tcard figure,.lr__fig--a,.cab__fig{aspect-ratio:4/5;background:#fff}
+.tcard figure::after{display:none}
+.tcard:hover img,.cab__fig:hover img,.rv__fig img{transform:none}
+.treat__k{display:none}
+.treat__media::after{display:none}
+.treat__n{left:0;bottom:0;width:100%;padding:12px 14px;background:var(--ink);color:#fff;font-size:12px}
+.treat__media img.studio-image{object-fit:contain;background:#fff}
+.afig{aspect-ratio:3/2;background:#fff}
+.afig--portrait img,.treat__media img.studio-portrait{object-fit:contain;background:#fff}
+.drawer__top{background:#fff}
+.drawer__top img{object-fit:contain}
+.rv__fig{background:#fff}
+@media(max-width:699px){.rv__fig{aspect-ratio:4/5}.rv__fig img:nth-child(n){object-position:50% 50%}}
+@media(max-width:760px){.meet img{top:25%;height:78%}}
+
 </style>
 </head>
 <body>
@@ -870,14 +889,14 @@ img.lq,video.lq{background-size:cover;background-position:center;background-repe
     <div class="hside">
       <button type="button" class="tile treat" id="tileTreat" data-cat="0">
         <span class="treat__media" id="treatMedia"></span>
-        <span class="treat__k" data-i18n="treat.k">En cabina</span>
+        <span class="treat__k" data-i18n="treat.k">Cuidado profesional</span>
         <span class="treat__n"><span data-i18n="treat.n">Tratamientos</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <span class="treat__strip" id="treatStrip">Postoperatorio</span>
       </button>
       <a class="tile meet" href="#leidy">
         <p class="meet__t"><span data-i18n="meet.l1">Conoce a la esteticista</span><b data-i18n="meet.l2">licenciada de Greenville</b></p>
         <svg class="meet__go" aria-hidden="true"><use href="#i-arrow"/></svg>
-        <img src="media/leidy-crema.webp" alt="Leidy Román sonriendo, con blazer crema y los brazos cruzados" width="539" height="1000" fetchpriority="low">
+        <img src="media/ultimate-meet-800.webp" srcset="media/ultimate-meet-800.webp 800w, media/ultimate-meet-1200.webp 1200w" sizes="(min-width:980px) 25vw, (min-width:761px) 50vw, 100vw" alt="Leidy Román sonriendo, sentada con traje blanco" width="539" height="1000" fetchpriority="low">
         <span class="meet__name" data-i18n="meet.name">Leidy Román, esteticista</span>
       </a>
     </div>
@@ -924,10 +943,10 @@ img.lq,video.lq{background-size:cover;background-position:center;background-repe
         </div>
       </div>
       <figure class="rv__fig wipe" id="rvFig">
-        <img class="is-on" src="media/rv-1.webp" width="864" height="1080" alt="Leidy aplica aparatología corporal en el abdomen de una clienta" loading="lazy" decoding="async">
-        <img src="media/rv-2.webp" width="864" height="1080" alt="Leidy Román en su cabina, frente al letrero dorado LR" loading="lazy" decoding="async">
-        <img src="media/rv-3.webp" width="864" height="1080" alt="Leidy durante un tratamiento corporal, con sus certificados detrás" loading="lazy" decoding="async">
-        <img src="media/rv-4.webp" width="864" height="1080" alt="Leidy realiza un facial con lámpara de aumento" loading="lazy" decoding="async">
+        <img class="is-on" src="media/ultimate-review-gloves-1080.webp" srcset="media/ultimate-review-gloves-640.webp 640w, media/ultimate-review-gloves-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román sonriendo con guantes negros" loading="lazy" decoding="async">
+        <img src="media/ultimate-review-spheres-1080.webp" srcset="media/ultimate-review-spheres-640.webp 640w, media/ultimate-review-spheres-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román con masajeadores faciales" loading="lazy" decoding="async">
+        <img src="media/ultimate-review-madero-1080.webp" srcset="media/ultimate-review-madero-640.webp 640w, media/ultimate-review-madero-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román con herramientas de maderoterapia" loading="lazy" decoding="async">
+        <img src="media/ultimate-portrait-side-1080.webp" srcset="media/ultimate-portrait-side-640.webp 640w, media/ultimate-portrait-side-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Retrato profesional de Leidy Román con traje negro" loading="lazy" decoding="async">
       </figure>
     </div>
   </div>
@@ -946,7 +965,7 @@ img.lq,video.lq{background-size:cover;background-position:center;background-repe
 <section class="team" id="leidy" aria-labelledby="miT">
   <div class="wrap">
     <div class="mi">
-      <figure class="mi__fig wipe"><img src="media/leidy-blanco-1200.webp" srcset="media/leidy-blanco-800.webp 800w, media/leidy-blanco-1200.webp 1200w" sizes="(min-width:980px) 42vw, (min-width:561px) 520px, 100vw" width="1200" height="1600" alt="Leidy Román sentada, sonriente y vestida de blanco" loading="lazy" decoding="async"></figure>
+      <figure class="mi__fig wipe"><img src="media/ultimate-about-1200.webp" srcset="media/ultimate-about-800.webp 800w, media/ultimate-about-1200.webp 1200w" sizes="(min-width:980px) 42vw, (min-width:561px) 520px, 100vw" width="1200" height="1600" alt="Leidy Román sonriendo, sentada con traje marrón" loading="lazy" decoding="async"></figure>
       <div class="mi__copy">
         <h2 class="mi__t st" id="miT" data-i18n-html="mi.title"><span class="sa">Conoce a</span> <span class="sb"><em>Leidy Román</em>.</span></h2>
         <p class="mi__sub fx" data-i18n="mi.sub">El camino que me trajo hasta aquí.</p>
@@ -969,13 +988,13 @@ img.lq,video.lq{background-size:cover;background-position:center;background-repe
       <ul class="prog" id="prog"></ul>
       <a class="btn-stone" id="clsBtn" target="_blank" rel="noopener" href="https://wa.me/16175482795"><svg aria-hidden="true"><use href="#i-spark"/></svg><span data-i18n="ac.btn">Quiero información</span></a>
     </div>
-    <figure class="lr__fig lr__fig--a wipe"><img src="media/expo-vendor-1080.webp" srcset="media/expo-vendor-640.webp 640w, media/expo-vendor-1080.webp 1080w" sizes="(min-width:980px) 46vw, 100vw" alt="Leidy Román sonriendo en su stand de la Metamorphosis Expo Show" style="object-position:50% 30%" loading="lazy" decoding="async"></figure>
+    <figure class="lr__fig lr__fig--a wipe"><img src="media/ultimate-portrait-side-1080.webp" srcset="media/ultimate-portrait-side-640.webp 640w, media/ultimate-portrait-side-1080.webp 1080w" sizes="(min-width:980px) 46vw, 100vw" alt="Leidy Román sonriendo con traje negro y brazos cruzados" loading="lazy" decoding="async"></figure>
   </div>
 </section>
 
 <section class="cab" id="tecnologia">
   <div class="wrap cab__grid">
-    <figure class="cab__fig wipe"><img src="media/valoracion-1080.webp" srcset="media/valoracion-640.webp 640w, media/valoracion-1080.webp 1080w" sizes="(min-width:980px) 46vw, 100vw" alt="Leidy le explica a una clienta el análisis del escáner facial" loading="lazy" decoding="async"></figure>
+    <figure class="cab__fig wipe"><img src="media/ultimate-tech-1080.webp" srcset="media/ultimate-tech-640.webp 640w, media/ultimate-tech-1080.webp 1080w" sizes="(min-width:980px) 46vw, 100vw" alt="Retrato profesional de Leidy Román con traje negro y brazos cruzados" loading="lazy" decoding="async"></figure>
     <div class="cab__copy">
       <p class="kick fx" data-i18n="cab.kick">Así empieza tu plan</p>
       <h2 class="title st" data-i18n-html="cab.title"><span class="sa">Tecnología</span> <span class="sb">de <em>cabina</em></span></h2>
@@ -1127,7 +1146,7 @@ es: {
  'video.pause':'Pausar video','video.play':'Reproducir video','video.alt':'Leidy en su cabina durante un facial, un tratamiento corporal y una sesión de láser',
  'hero.eyebrow':'Estética corporal, postoperatoria y facial en Greenville, SC','hero.title':'El lujo de sentirse <em>bien en tu propia piel</em>','hero.wa':'Escríbeme por WhatsApp',
  'badge.text':'Leidy Román · Agenda ·','badge.aria':'Agendar una cita con Leidy Román',
- 'treat.k':'En cabina','treat.n':'Tratamientos',
+ 'treat.k':'Cuidado profesional','treat.n':'Tratamientos',
  'meet.l1':'Conoce a la esteticista','meet.l2':'licenciada de Greenville','meet.name':'Leidy Román, esteticista',
  'press.aria':'Credenciales de Leidy',
  'press':[['a','Booksy Recommended'],['b','5.0','★★★★★'],['c','Medical Assistant'],['d','Metamorphosis Expo'],['f','official vendor'],['e','Esteticista licenciada'],['g','Phlebotomy Technician'],['c','Español & English']],
@@ -1166,7 +1185,7 @@ en: {
  'video.pause':'Pause video','video.play':'Play video','video.alt':'Leidy in her treatment room during a facial, a body treatment and a laser session',
  'hero.eyebrow':'Body, post‑op and facial aesthetics in Greenville, SC','hero.title':'The luxury of feeling <em>good in your own skin</em>','hero.wa':'Message me on WhatsApp',
  'badge.text':'Leidy Román · Book ·','badge.aria':'Book an appointment with Leidy Román',
- 'treat.k':'In the room','treat.n':'Treatments',
+ 'treat.k':'Professional care','treat.n':'Treatments',
  'meet.l1':'Meet Greenville’s','meet.l2':'licensed esthetician','meet.name':'Leidy Román, esthetician',
  'press.aria':'Leidy’s credentials',
  'press':[['a','Booksy Recommended'],['b','5.0','★★★★★'],['c','Medical Assistant'],['d','Metamorphosis Expo'],['f','official vendor'],['e','Licensed esthetician'],['g','Phlebotomy Technician'],['c','English & Español']],
@@ -1208,11 +1227,11 @@ const PLAN = {es:'Según tu plan', en:'Per your plan'};
 
 /* ---------- data ---------- */
 const CATS = [
- {id:'postop', n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'duo-post', intro:{es:'Te acompaño durante la recuperación de tu cirugía estética con drenaje linfático manual, masajes especializados y aparatología elegida según tu etapa, siempre respetando las indicaciones de tu médico.',en:'I support your recovery after cosmetic surgery with manual lymphatic drainage, specialized massage and equipment chosen for your stage, always following your doctor’s instructions.'}},
- {id:'corporal', n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'duo-moldeo', intro:{es:'Tratamientos personalizados que combinan masaje manual, maderoterapia, metalterapia y aparatología como radiofrecuencia, cavitación, crioterapia, vacumterapia y estimulación muscular, para mejorar la apariencia del contorno, la celulitis y la flacidez.',en:'Personalized treatments that combine hands‑on massage, wood therapy, metal therapy and equipment like radiofrequency, cavitation, cryotherapy, vacuum therapy and muscle stimulation, to improve the look of your contour, cellulite and laxity.'}},
- {id:'facial', n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'facial-limpieza', intro:{es:'Tratamientos según tu tipo de piel: limpieza profunda, dermaplaning, microneedling, PDRN y peelings químicos para mejorar la apariencia, la textura, la hidratación y la luminosidad.',en:'Treatments matched to your skin type: deep cleansing, dermaplaning, microneedling, PDRN and chemical peels to improve appearance, texture, hydration and glow.'}},
- {id:'laser', n:{es:'Depilación láser',en:'Laser hair removal'}, img:'laser-leidy', intro:{es:'Láser diodo por zonas o en combos. Las sesiones de zonas sueltas duran entre 15 y 30 minutos.',en:'Diode laser by area or in combos. Single‑area sessions take 15 to 30 minutes.'}},
- {id:'makeup', n:{es:'Maquillaje',en:'Makeup'}, img:'leidy-stand', intro:{es:'Maquillaje profesional para tus fechas importantes. Con el maquillaje empezó mi camino en la belleza.',en:'Professional makeup for the dates that matter. Makeup is where my path in beauty began.'}}
+ {id:'postop', n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'ultimate-about', intro:{es:'Te acompaño durante la recuperación de tu cirugía estética con drenaje linfático manual, masajes especializados y aparatología elegida según tu etapa, siempre respetando las indicaciones de tu médico.',en:'I support your recovery after cosmetic surgery with manual lymphatic drainage, specialized massage and equipment chosen for your stage, always following your doctor’s instructions.'}},
+ {id:'corporal', n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'ultimate-madero', intro:{es:'Tratamientos personalizados que combinan masaje manual, maderoterapia, metalterapia y aparatología como radiofrecuencia, cavitación, crioterapia, vacumterapia y estimulación muscular, para mejorar la apariencia del contorno, la celulitis y la flacidez.',en:'Personalized treatments that combine hands‑on massage, wood therapy, metal therapy and equipment like radiofrequency, cavitation, cryotherapy, vacuum therapy and muscle stimulation, to improve the look of your contour, cellulite and laxity.'}},
+ {id:'facial', n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'ultimate-facial', intro:{es:'Tratamientos según tu tipo de piel: limpieza profunda, dermaplaning, microneedling, PDRN y peelings químicos para mejorar la apariencia, la textura, la hidratación y la luminosidad.',en:'Treatments matched to your skin type: deep cleansing, dermaplaning, microneedling, PDRN and chemical peels to improve appearance, texture, hydration and glow.'}},
+ {id:'laser', n:{es:'Depilación láser',en:'Laser hair removal'}, img:'ultimate-portrait-side', intro:{es:'Láser diodo por zonas o en combos. Las sesiones de zonas sueltas duran entre 15 y 30 minutos.',en:'Diode laser by area or in combos. Single‑area sessions take 15 to 30 minutes.'}},
+ {id:'makeup', n:{es:'Maquillaje',en:'Makeup'}, img:'ultimate-makeup', intro:{es:'Maquillaje profesional para tus fechas importantes. Con el maquillaje empezó mi camino en la belleza.',en:'Professional makeup for the dates that matter. Makeup is where my path in beauty began.'}}
 ];
 const SVC = {
  postop: [
@@ -1257,26 +1276,26 @@ const COMBOS = [
  {n:{es:'Bigote, axilas, brazos y piernas completas',en:'Upper lip, underarms, full arms and full legs'},p:300,s:115}
 ];
 const TREAT = [
- {img:'w-cabina', n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
+ {img:'ultimate-facial', n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
  {img:'w-led', n:{es:'Tratamientos corporales',en:'Body treatments'}, cat:1},
- {img:'w-estudio', n:{es:'Depilación láser',en:'Laser hair removal'}, cat:3}
+ {img:'ultimate-portrait-side', portrait:true, n:{es:'Depilación láser',en:'Laser hair removal'}, cat:3}
 ];
 const AREAS = [
  {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/w-post-2-1024.webp', cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
  {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/w-aparato-1024.webp', cat:1, items:() => SVC.corporal.map(x => L(x.n))},
- {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'media/w-facial-1024.webp', cat:2, items:() => SVC.facial.map(s => L(s.n))},
+ {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'media/ultimate-facial-1080.webp', cat:2, items:() => SVC.facial.map(s => L(s.n))},
  {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/w-laser-2-1024.webp', cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
- {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/w-laser-1024.webp', cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
- {n:{es:'Maquillaje',en:'Makeup'}, img:'media/leidy-stand-1080.webp', pos:'50% 24%', cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
+ {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/ultimate-portrait-side-1080.webp', portrait:true, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
+ {n:{es:'Maquillaje',en:'Makeup'}, img:'media/ultimate-makeup-1080.webp', cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
 ];
 const TEAM = [
- {img:'leidy-retrato-nuevo', pos:'50% 50%', h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
- {img:'certificado', pos:'50% 40%', h:{es:'Formación clínica',en:'Clinical training'}, d:{es:'Medical Assistant y Phlebotomy Technician: higiene, seguridad y protocolos claros en cada sesión.',en:'Medical Assistant and Phlebotomy Technician: hygiene, safety and clear protocols in every session.'}},
- {img:'laser-leidy', pos:'50% 32%', h:{es:'Especialización',en:'Advanced training'}, d:{es:'Capacitaciones en estética facial, corporal, postoperatoria y aparatología avanzada. Y sigo estudiando.',en:'Training in facial, body and post‑op care and advanced equipment. And I keep learning.'}},
- {img:'leidy-habla', pos:'50% 34%', h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
+ {img:'ultimate-team-portrait', pos:'50% 50%', h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
+ {img:'ultimate-device', pos:'50% 50%', h:{es:'Formación clínica',en:'Clinical training'}, d:{es:'Medical Assistant y Phlebotomy Technician: higiene, seguridad y protocolos claros en cada sesión.',en:'Medical Assistant and Phlebotomy Technician: hygiene, safety and clear protocols in every session.'}},
+ {img:'ultimate-team-spheres', pos:'50% 50%', h:{es:'Especialización',en:'Advanced training'}, d:{es:'Capacitaciones en estética facial, corporal, postoperatoria y aparatología avanzada. Y sigo estudiando.',en:'Training in facial, body and post‑op care and advanced equipment. And I keep learning.'}},
+ {img:'ultimate-team-seated', pos:'50% 50%', h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
 ];
 const NEWS = [
- {img:'expo-booth', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
+ {img:'ultimate-team-portrait', pos:'50% 12%', alt:'Retrato profesional de Leidy Román', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
  {img:'n-suite', a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
  {img:'n-detalle', a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
  {img:'n-letras', a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
@@ -1313,7 +1332,7 @@ function renderPress() {
 }
 let ti = 0, tTimer = 0, tHold = false;
 function renderTreat() {
-  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<img src="media/${x.img}-1024.webp" alt="" class="${i === ti ? 'is-on' : ''}" decoding="async">`).join('');
+  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<img src="media/${x.img}-${x.img.startsWith('ultimate-') ? 1080 : 1024}.webp" alt="" class="${i === ti ? 'is-on' : ''}${x.img.startsWith('ultimate-') ? ' studio-image' : ''}" decoding="async">`).join('');
   setTreat(ti);
 }
 function setTreat(i) {
@@ -1339,7 +1358,7 @@ let ai = 0;
 function panelHTML(a) {
   const pos = a.pos ? ` style="object-position:${a.pos}"` : '';
   const act = t('areas.all');
-  return `<div class="apanel"><figure class="afig"><img src="${a.img}" alt=""${pos} loading="lazy" decoding="async"><button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
+  return `<div class="apanel"><figure class="afig${a.portrait ? ' afig--portrait' : ''}"><img src="${a.img}" alt=""${pos} loading="lazy" decoding="async"><button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
 }
 function renderAreas() {
   $('#areasList').innerHTML = AREAS.map((a, i) => `<li class="${i === ai ? 'is-on' : ''}"><button type="button" class="areas__tab" role="tab" id="atab${i}" aria-selected="${i === ai}" aria-controls="areasPanel" data-i="${i}"><span>${esc(L(a.n))}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button><div class="areas__acc"${i === ai ? '' : ' inert'}><div>${panelHTML(a)}</div></div></li>`).join('');
@@ -1375,7 +1394,7 @@ function renderTeam() {
 function renderSteps() { $('#steps').innerHTML = t('steps').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); group($('#steps')); }
 function renderProg() { $('#prog').innerHTML = t('prog').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); }
 function renderNews() {
-  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure><img src="media/${n.img}-640.webp" alt="" loading="lazy" decoding="async"><figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
+  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure><img src="media/${n.img}-640.webp" alt="${esc(n.alt || '')}"${n.pos ? ` style="object-position:${n.pos}"` : ''} loading="lazy" decoding="async"><figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
   newsArrows();
 }
 function newsArrows() { const tr = $('#newsTrack'), can = tr.scrollWidth > tr.clientWidth + 4; $('#newsPrev').hidden = !can; $('#newsNext').hidden = !can; }
@@ -1429,7 +1448,7 @@ function drawerHTML(i) {
   }
   return `<p class="kick">${t('d.label')}</p><h2 class="title" id="dTitle">${esc(L(c.n))}</h2><p class="lede">${esc(L(c.intro))}</p>${list}<p class="fine">${t('d.fine')}</p>`;
 }
-function setDrawerImg(base, pos) { const img = $('#dImg'); img.srcset = `media/${base}-640.webp 640w, media/${base}-1080.webp 1080w`; img.sizes = '620px'; img.src = `media/${base}-1080.webp`; img.style.objectPosition = pos || ''; }
+function setDrawerImg(base, pos) { const img = $('#dImg'), about = base === 'ultimate-about', lo = about ? 800 : 640, hi = about ? 1200 : 1080; img.srcset = `media/${base}-${lo}.webp ${lo}w, media/${base}-${hi}.webp ${hi}w`; img.sizes = '620px'; img.src = `media/${base}-${hi}.webp`; img.alt = 'Retrato profesional de Leidy Román'; img.style.objectPosition = pos || ''; }
 function openDrawer(i, focus) {
   curCat = i; curFocus = focus || null; const c = CATS[i];
   setDrawerImg(c.img);
