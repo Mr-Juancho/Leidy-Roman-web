@@ -588,7 +588,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .rv__nav .arr svg{width:30px;height:30px}
 .rv__n{font:500 13px/1 var(--sans);letter-spacing:.16em;color:var(--d2);font-variant-numeric:tabular-nums}
 .rv__fig{position:relative;aspect-ratio:4/5;overflow:hidden;background:#1a1a1a}
-.rv__fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.2s var(--ease),transform 6s linear}
+.rv__fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transform:none;transition:none}
 .rv__fig img.is-on{opacity:1;transform:scale(1)}
 
 /* meet leidy: the opening block, photo on white and the story beside it */
@@ -942,11 +942,8 @@ img.lq,video.lq{background-size:cover;background-position:center;background-repe
           <button type="button" class="arr arr--r" id="rvNext" data-i18n-aria="rv.next" aria-label="Siguiente opinión"><svg><use href="#i-arrow"/></svg></button>
         </div>
       </div>
-      <figure class="rv__fig wipe" id="rvFig">
-        <img class="is-on" src="media/ultimate-review-gloves-1080.webp" srcset="media/ultimate-review-gloves-640.webp 640w, media/ultimate-review-gloves-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román sonriendo con guantes negros" loading="lazy" decoding="async">
-        <img src="media/ultimate-review-spheres-1080.webp" srcset="media/ultimate-review-spheres-640.webp 640w, media/ultimate-review-spheres-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román con masajeadores faciales" loading="lazy" decoding="async">
-        <img src="media/ultimate-review-madero-1080.webp" srcset="media/ultimate-review-madero-640.webp 640w, media/ultimate-review-madero-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román con herramientas de maderoterapia" loading="lazy" decoding="async">
-        <img src="media/ultimate-portrait-side-1080.webp" srcset="media/ultimate-portrait-side-640.webp 640w, media/ultimate-portrait-side-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Retrato profesional de Leidy Román con traje negro" loading="lazy" decoding="async">
+      <figure class="rv__fig" id="rvFig">
+        <img id="rvImage" src="media/ultimate-review-gloves-1080.webp" srcset="media/ultimate-review-gloves-640.webp 640w, media/ultimate-review-gloves-1080.webp 1080w" sizes="(min-width:980px) 36vw, 100vw" width="864" height="1080" alt="Leidy Román sonriendo con guantes negros" loading="lazy" decoding="async">
       </figure>
     </div>
   </div>
@@ -1227,11 +1224,11 @@ const PLAN = {es:'Según tu plan', en:'Per your plan'};
 
 /* ---------- data ---------- */
 const CATS = [
- {id:'postop', n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'ultimate-about', intro:{es:'Te acompaño durante la recuperación de tu cirugía estética con drenaje linfático manual, masajes especializados y aparatología elegida según tu etapa, siempre respetando las indicaciones de tu médico.',en:'I support your recovery after cosmetic surgery with manual lymphatic drainage, specialized massage and equipment chosen for your stage, always following your doctor’s instructions.'}},
- {id:'corporal', n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'ultimate-madero', intro:{es:'Tratamientos personalizados que combinan masaje manual, maderoterapia, metalterapia y aparatología como radiofrecuencia, cavitación, crioterapia, vacumterapia y estimulación muscular, para mejorar la apariencia del contorno, la celulitis y la flacidez.',en:'Personalized treatments that combine hands‑on massage, wood therapy, metal therapy and equipment like radiofrequency, cavitation, cryotherapy, vacuum therapy and muscle stimulation, to improve the look of your contour, cellulite and laxity.'}},
- {id:'facial', n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'ultimate-facial', intro:{es:'Tratamientos según tu tipo de piel: limpieza profunda, dermaplaning, microneedling, PDRN y peelings químicos para mejorar la apariencia, la textura, la hidratación y la luminosidad.',en:'Treatments matched to your skin type: deep cleansing, dermaplaning, microneedling, PDRN and chemical peels to improve appearance, texture, hydration and glow.'}},
- {id:'laser', n:{es:'Depilación láser',en:'Laser hair removal'}, img:'ultimate-portrait-side', intro:{es:'Láser diodo por zonas o en combos. Las sesiones de zonas sueltas duran entre 15 y 30 minutos.',en:'Diode laser by area or in combos. Single‑area sessions take 15 to 30 minutes.'}},
- {id:'makeup', n:{es:'Maquillaje',en:'Makeup'}, img:'ultimate-makeup', intro:{es:'Maquillaje profesional para tus fechas importantes. Con el maquillaje empezó mi camino en la belleza.',en:'Professional makeup for the dates that matter. Makeup is where my path in beauty began.'}}
+ {id:'postop', n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'servicio-postoperatorio', alt:{es:'Masaje postoperatorio sobre el abdomen',en:'Post-op massage on the abdomen'}, intro:{es:'Te acompaño durante la recuperación de tu cirugía estética con drenaje linfático manual, masajes especializados y aparatología elegida según tu etapa, siempre respetando las indicaciones de tu médico.',en:'I support your recovery after cosmetic surgery with manual lymphatic drainage, specialized massage and equipment chosen for your stage, always following your doctor’s instructions.'}},
+ {id:'corporal', n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'servicio-corporal', alt:{es:'Masaje corporal sobre el abdomen',en:'Body massage on the abdomen'}, intro:{es:'Tratamientos personalizados que combinan masaje manual, maderoterapia, metalterapia y aparatología como radiofrecuencia, cavitación, crioterapia, vacumterapia y estimulación muscular, para mejorar la apariencia del contorno, la celulitis y la flacidez.',en:'Personalized treatments that combine hands‑on massage, wood therapy, metal therapy and equipment like radiofrequency, cavitation, cryotherapy, vacuum therapy and muscle stimulation, to improve the look of your contour, cellulite and laxity.'}},
+ {id:'facial', n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'servicio-facial', alt:{es:'Limpieza y masaje facial de una clienta',en:'A client receiving a cleansing facial massage'}, intro:{es:'Tratamientos según tu tipo de piel: limpieza profunda, dermaplaning, microneedling, PDRN y peelings químicos para mejorar la apariencia, la textura, la hidratación y la luminosidad.',en:'Treatments matched to your skin type: deep cleansing, dermaplaning, microneedling, PDRN and chemical peels to improve appearance, texture, hydration and glow.'}},
+ {id:'laser', n:{es:'Depilación láser',en:'Laser hair removal'}, img:'servicio-laser', alt:{es:'Depilación láser en la axila de una clienta',en:'Laser hair removal on a client’s underarm'}, intro:{es:'Láser diodo por zonas o en combos. Las sesiones de zonas sueltas duran entre 15 y 30 minutos.',en:'Diode laser by area or in combos. Single‑area sessions take 15 to 30 minutes.'}},
+ {id:'makeup', n:{es:'Maquillaje',en:'Makeup'}, img:'servicio-maquillaje', alt:{es:'Detalle de una brocha de maquillaje',en:'Detail of a makeup brush'}, intro:{es:'Maquillaje profesional para tus fechas importantes. Con el maquillaje empezó mi camino en la belleza.',en:'Professional makeup for the dates that matter. Makeup is where my path in beauty began.'}}
 ];
 const SVC = {
  postop: [
@@ -1276,17 +1273,17 @@ const COMBOS = [
  {n:{es:'Bigote, axilas, brazos y piernas completas',en:'Upper lip, underarms, full arms and full legs'},p:300,s:115}
 ];
 const TREAT = [
- {img:'ultimate-facial', n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
- {img:'w-led', n:{es:'Tratamientos corporales',en:'Body treatments'}, cat:1},
- {img:'ultimate-portrait-side', portrait:true, n:{es:'Depilación láser',en:'Laser hair removal'}, cat:3}
+ {img:'servicio-facial', alt:{es:'Limpieza y masaje facial de una clienta',en:'A client receiving a cleansing facial massage'}, n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
+ {img:'servicio-corporal', alt:{es:'Masaje corporal sobre el abdomen',en:'Body massage on the abdomen'}, n:{es:'Tratamientos corporales',en:'Body treatments'}, cat:1},
+ {img:'servicio-laser', alt:{es:'Depilación láser en la axila de una clienta',en:'Laser hair removal on a client’s underarm'}, n:{es:'Depilación láser',en:'Laser hair removal'}, cat:3}
 ];
 const AREAS = [
- {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/w-post-2-1024.webp', cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
- {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/w-aparato-1024.webp', cat:1, items:() => SVC.corporal.map(x => L(x.n))},
- {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'media/ultimate-facial-1080.webp', cat:2, items:() => SVC.facial.map(s => L(s.n))},
- {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/w-laser-2-1024.webp', cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
- {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/ultimate-portrait-side-1080.webp', portrait:true, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
- {n:{es:'Maquillaje',en:'Makeup'}, img:'media/ultimate-makeup-1080.webp', cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
+ {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/servicio-postoperatorio-1080.webp', alt:{es:'Masaje postoperatorio sobre el abdomen',en:'Post-op massage on the abdomen'}, cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
+ {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/servicio-corporal-1080.webp', alt:{es:'Masaje corporal sobre el abdomen',en:'Body massage on the abdomen'}, cat:1, items:() => SVC.corporal.map(x => L(x.n))},
+ {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'media/servicio-facial-1080.webp', alt:{es:'Limpieza y masaje facial de una clienta',en:'A client receiving a cleansing facial massage'}, cat:2, items:() => SVC.facial.map(s => L(s.n))},
+ {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/servicio-laser-1080.webp', alt:{es:'Depilación láser en la axila de una clienta',en:'Laser hair removal on a client’s underarm'}, cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
+ {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/servicio-laser-1080.webp', alt:{es:'Depilación láser en la axila de una clienta',en:'Laser hair removal on a client’s underarm'}, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
+ {n:{es:'Maquillaje',en:'Makeup'}, img:'media/servicio-maquillaje-1080.webp', alt:{es:'Detalle de una brocha de maquillaje',en:'Detail of a makeup brush'}, cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
 ];
 const TEAM = [
  {img:'ultimate-team-portrait', pos:'50% 50%', h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
@@ -1332,7 +1329,7 @@ function renderPress() {
 }
 let ti = 0, tTimer = 0, tHold = false;
 function renderTreat() {
-  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<img src="media/${x.img}-${x.img.startsWith('ultimate-') ? 1080 : 1024}.webp" alt="" class="${i === ti ? 'is-on' : ''}${x.img.startsWith('ultimate-') ? ' studio-image' : ''}" decoding="async">`).join('');
+  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<img src="media/${x.img}-1080.webp" srcset="media/${x.img}-640.webp 640w, media/${x.img}-1080.webp 1080w" sizes="(min-width:980px) 25vw, 100vw" alt="${esc(L(x.alt))}" class="${i === ti ? 'is-on' : ''}" decoding="async">`).join('');
   setTreat(ti);
 }
 function setTreat(i) {
@@ -1358,7 +1355,7 @@ let ai = 0;
 function panelHTML(a) {
   const pos = a.pos ? ` style="object-position:${a.pos}"` : '';
   const act = t('areas.all');
-  return `<div class="apanel"><figure class="afig${a.portrait ? ' afig--portrait' : ''}"><img src="${a.img}" alt=""${pos} loading="lazy" decoding="async"><button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
+  return `<div class="apanel"><figure class="afig"><img src="${a.img}" alt="${esc(L(a.alt) || '')}"${pos} loading="lazy" decoding="async"><button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
 }
 function renderAreas() {
   $('#areasList').innerHTML = AREAS.map((a, i) => `<li class="${i === ai ? 'is-on' : ''}"><button type="button" class="areas__tab" role="tab" id="atab${i}" aria-selected="${i === ai}" aria-controls="areasPanel" data-i="${i}"><span>${esc(L(a.n))}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button><div class="areas__acc"${i === ai ? '' : ' inert'}><div>${panelHTML(a)}</div></div></li>`).join('');
@@ -1403,14 +1400,29 @@ $('#newsPrev').addEventListener('click', () => newsStep(-1));
 $('#newsNext').addEventListener('click', () => newsStep(1));
 let nrT = 0; addEventListener('resize', () => { clearTimeout(nrT); nrT = setTimeout(newsArrows, 150); });
 const STAR5 = '<svg aria-hidden="true"><use href="#i-star"/></svg>'.repeat(5);
+// One fixed photograph per review; arrows and swipe change both together.
+const REVIEW_PHOTOS = [
+ ['ultimate-review-gloves', 'Leidy Román sonriendo con guantes negros'],
+ ['ultimate-review-spheres', 'Leidy Román con masajeadores faciales'],
+ ['ultimate-review-madero', 'Leidy Román con herramientas de maderoterapia'],
+ ['ultimate-portrait-side', 'Retrato profesional de Leidy Román con traje negro'],
+ ['ultimate-team-portrait', 'Leidy Román sonriendo con traje negro'],
+ ['ultimate-device', 'Leidy Román con un dispositivo de cuidado facial'],
+ ['ultimate-team-spheres', 'Leidy Román con masajeadores faciales dorados'],
+ ['ultimate-team-seated', 'Leidy Román sentada con traje marrón'],
+ ['ultimate-tech', 'Retrato profesional de Leidy Román con brazos cruzados']
+];
 let ri = 0;
 function renderReview() {
-  const r = REVIEWS[ri], tr = lang === 'en' && r.en, q = $('#rvQ');
+  const r = REVIEWS[ri], tr = lang === 'en' && r.en, q = $('#rvQ'), [photo, alt] = REVIEW_PHOTOS[ri], image = $('#rvImage');
+  image.srcset = `media/${photo}-640.webp 640w, media/${photo}-1080.webp 1080w`;
+  image.src = `media/${photo}-1080.webp`;
+  image.alt = alt;
   q.innerHTML = `<span class="rv__mark" aria-hidden="true">“</span><blockquote><p>${esc(tr ? r.en : r.q)}</p></blockquote><p class="rv__who"><b>${esc(r.who)}</b><i>${esc(L(r.s))}</i></p><p class="rv__meta"><span class="stars" role="img" aria-label="5/5">${STAR5}</span><span>${t('rv.real')}</span>${tr ? `<span class="rv__tr">${t('rv.tr')}</span>` : ''}</p>`;
   q.classList.remove('is-in'); void q.offsetWidth; q.classList.add('is-in');
   $('#rvN').textContent = String(ri + 1).padStart(2, '0') + ' / ' + String(REVIEWS.length).padStart(2, '0');
 }
-function goReview(d) { ri = (ri + d + REVIEWS.length) % REVIEWS.length; $('#rvQ').setAttribute('aria-live', 'polite'); renderReview(); rvShow(rvP + d); }
+function goReview(d) { ri = (ri + d + REVIEWS.length) % REVIEWS.length; $('#rvQ').setAttribute('aria-live', 'polite'); renderReview(); }
 $('#rvPrev').addEventListener('click', () => goReview(-1));
 $('#rvNext').addEventListener('click', () => goReview(1));
 let tx0 = null;
@@ -1448,10 +1460,10 @@ function drawerHTML(i) {
   }
   return `<p class="kick">${t('d.label')}</p><h2 class="title" id="dTitle">${esc(L(c.n))}</h2><p class="lede">${esc(L(c.intro))}</p>${list}<p class="fine">${t('d.fine')}</p>`;
 }
-function setDrawerImg(base, pos) { const img = $('#dImg'), about = base === 'ultimate-about', lo = about ? 800 : 640, hi = about ? 1200 : 1080; img.srcset = `media/${base}-${lo}.webp ${lo}w, media/${base}-${hi}.webp ${hi}w`; img.sizes = '620px'; img.src = `media/${base}-${hi}.webp`; img.alt = 'Retrato profesional de Leidy Román'; img.style.objectPosition = pos || ''; }
+function setDrawerImg(base, pos, alt) { const img = $('#dImg'); img.srcset = `media/${base}-640.webp 640w, media/${base}-1080.webp 1080w`; img.sizes = '620px'; img.src = `media/${base}-1080.webp`; img.alt = L(alt) || ''; img.style.objectPosition = pos || ''; }
 function openDrawer(i, focus) {
   curCat = i; curFocus = focus || null; const c = CATS[i];
-  setDrawerImg(c.img);
+  setDrawerImg(c.img, c.pos, c.alt);
   $('#dBody').innerHTML = drawerHTML(i);
   if ($('#svcs')) bindAcc($('#svcs'));
   $('#dWa').href = wa(fill(t('wa.cat'), {s: L(c.n)}));
@@ -1530,12 +1542,6 @@ if (meet && !RM.matches) {
   meet.addEventListener('touchend', release, {passive: true});
   meet.addEventListener('touchcancel', release, {passive: true});
 }
-
-/* ---------- reviews: photos of Leidy at work cross-fade while the section is in view ---------- */
-let rvP = 0, rvTimer = 0;
-function rvShow(i) { const im = $$('#rvFig img'); rvP = (i + im.length) % im.length; im.forEach((x, k) => x.classList.toggle('is-on', k === rvP)); }
-function rvRun(on) { clearInterval(rvTimer); if (on && !RM.matches) rvTimer = setInterval(() => { if (!document.hidden) rvShow(rvP + 1); }, 4800); }
-if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$('#rvFig img').forEach(x => { x.loading = 'eager'; }); rvRun(e.isIntersecting); }), {threshold: .2}).observe($('#rvFig'));
 
 /* ---------- treatment clips: they load after the hero film and play only while in view ---------- */
 const CLIPS = $$('video[data-lg]');
