@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap">
-<link rel="preload" as="image" href="media/hero-estudio-1400.webp" imagesrcset="media/hero-estudio-800.webp 800w, media/hero-estudio-1400.webp 1400w" imagesizes="(min-width:980px) 44vw, (min-width:761px) 56vw, 64vw">
+<link rel="preload" as="image" href="media/hero-retrato-wide-2400.webp" imagesrcset="media/hero-retrato-wide-1200.webp 1200w, media/hero-retrato-wide-2400.webp 2400w" imagesizes="(min-width:980px) 75vw, 100vw" media="(min-width:561px)">
+<link rel="preload" as="image" href="media/hero-retrato-mobile-1000.webp" imagesrcset="media/hero-retrato-mobile-640.webp 640w, media/hero-retrato-mobile-1000.webp 1000w" imagesizes="100vw" media="(max-width:560px)">
 <style>
 /* Layout: clinic magazine grid. Silk header; a black bento opens the page (studio portrait + two side tiles) over a running strip of credentials; then full-bleed paired panels, a silk index of treatment areas, black left/right story blocks, a full-height booking call, client experiences and a black footer. One brand look by choice: black, silk and a little gold. */
 :root{
@@ -812,11 +813,12 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .tcard h3{padding-top:0}
 .cab__fig{aspect-ratio:1}
 
-/* Still portrait from the separate studio session; no footage or frame thumbnails. */
-.hmain__portrait{position:absolute;inset:0 0 0 auto;width:59%;height:100%;max-width:none;object-fit:cover;object-position:50% 18%}
-.hmain::after{background:linear-gradient(90deg,#171815 0%,#171815 33%,rgba(23,24,21,.96) 40%,rgba(23,24,21,.6) 51%,rgba(23,24,21,0) 67%)}
-.hcopy{right:auto;width:54%;top:clamp(28px,4vw,58px)}
-.hcopy h1{font-size:clamp(36px,4vw,58px);max-width:9em;text-wrap:pretty}
+/* Art-directed studio portrait: separate wide and mobile crops, original face intact. */
+.hmain__photo{position:absolute;inset:0;display:block}
+.hmain__portrait{width:100%;height:100%;max-width:none;object-fit:cover;object-position:74% 48%}
+.hmain::after{background:linear-gradient(90deg,#171815 0%,rgba(23,24,21,.99) 30%,rgba(23,24,21,.98) 40%,rgba(23,24,21,.8) 50%,rgba(23,24,21,.45) 58%,rgba(23,24,21,.1) 67%,transparent 75%)}
+.hcopy{right:auto;width:46%;top:clamp(28px,4vw,58px)}
+.hcopy h1{font-size:clamp(36px,4vw,58px);max-width:9em;text-wrap:balance}
 .hcopy .eyebrow{max-width:26em}
 .care-art{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 75% 18%,#77715f 0,transparent 56%),linear-gradient(145deg,#232824,#111613);color:#d6c18e}
 .care-art::before{content:"";position:absolute;inset:12%;border:1px solid currentColor;opacity:.14;transform:rotate(-12deg);border-radius:48% 52% 60% 40%/36% 65% 35% 64%}
@@ -839,15 +841,22 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .ncard figure>.care-art{position:absolute;inset:0}.ncard .care-art>svg{width:26%;max-width:90px;stroke-width:1}
 .ncard .care-art--social{background:linear-gradient(145deg,#e8e1d5,#c8bea9);color:#75633d}
 .ncard .care-art--location{background:radial-gradient(ellipse at 80% 20%,#747765,transparent 65%),#232923}
-@media(min-width:980px) and (max-width:1199px){.hcopy h1{font-size:43px}.hcopy{width:52%}}
-@media(max-width:760px){
-  .hmain{aspect-ratio:1/1.12;min-height:430px;min-width:0;width:100%}
-  .hmain__portrait{width:64%;object-position:51% 15%}
-  .hcopy{left:20px;top:25px;width:50%}
-  .hcopy h1{font-size:clamp(28px,7.8vw,40px);line-height:1.12}
-  .hcopy .eyebrow{font-size:10px;line-height:1.5;max-width:20em}
-  .hmain::after{background:linear-gradient(90deg,#171815 0%,#171815 23%,rgba(23,24,21,.92) 34%,rgba(23,24,21,.5) 48%,transparent 70%)}
-  .hmain .badge{right:16px;bottom:16px;width:88px}
+@media(min-width:980px) and (max-width:1199px){.hcopy h1{font-size:43px}.hcopy{width:46%}}
+.treat__frame>img{width:100%;height:100%;object-fit:cover;opacity:1;transform:none}
+.duo__card>img{width:100%;height:100%;object-fit:cover}
+.duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.62),transparent 55%)}
+@media(min-width:561px) and (max-width:979px){
+ .hmain{aspect-ratio:16/10;min-width:0;width:100%}
+ .hcopy{width:46%;top:32px}.hcopy h1{font-size:clamp(32px,5.2vw,46px)}
+}
+@media(max-width:560px){
+ .hmain{aspect-ratio:10/17;min-height:0;min-width:0;width:100%}
+ .hmain__portrait{object-position:center;object-fit:cover}
+ .hcopy{left:24px;right:24px;top:24px;width:auto;gap:14px}
+ .hcopy h1{font-size:clamp(28px,7.6vw,38px);line-height:1.12;max-width:10.5em}
+ .hcopy .eyebrow{font-size:9px;line-height:1.5;max-width:31em}
+ .hmain::after{background:linear-gradient(180deg,#171815 0px,#171815 135px,rgba(23,24,21,.98) 155px,rgba(23,24,21,.72) 185px,rgba(23,24,21,.3) 215px,transparent 250px)}
+ .hmain .badge{right:14px;bottom:14px;width:78px}
 }
 
 </style>
@@ -906,7 +915,10 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 <section class="hero" id="inicio" aria-label="Leidy Román Beauty">
   <div class="hero__grid">
     <div class="hmain">
-      <img class="hmain__portrait" src="media/hero-estudio-1400.webp" srcset="media/hero-estudio-800.webp 800w, media/hero-estudio-1400.webp 1400w" sizes="(min-width:980px) 44vw, (min-width:761px) 56vw, 64vw" alt="Leidy Román sonriendo con traje negro en su sesión de retratos" data-i18n-alt="hero.photo" width="1400" height="1740" fetchpriority="high">
+      <picture class="hmain__photo">
+        <source media="(max-width:560px)" srcset="media/hero-retrato-mobile-640.webp 640w, media/hero-retrato-mobile-1000.webp 1000w" sizes="100vw">
+        <img class="hmain__portrait" src="media/hero-retrato-wide-2400.webp" srcset="media/hero-retrato-wide-1200.webp 1200w, media/hero-retrato-wide-2400.webp 2400w" sizes="(min-width:980px) 75vw, 100vw" alt="Leidy Román sonriendo con traje negro en su sesión de retratos" data-i18n-alt="hero.photo" width="2400" height="1500" fetchpriority="high">
+      </picture>
       <div class="hcopy">
         <p class="eyebrow" data-i18n="hero.eyebrow">Estética corporal, postoperatoria y facial en Greenville, SC</p>
         <h1 data-i18n-html="hero.title">El lujo de sentirse <em>bien en tu propia piel</em></h1>
@@ -939,11 +951,11 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 <section class="spec" id="especialidades" data-i18n-aria="duo.aria" aria-label="Especialidades">
   <div class="duo">
     <button type="button" class="duo__card" data-cat="0">
-      <span class="care-art care-art--recovery" aria-hidden="true"><svg viewBox="0 0 96 96"><use href="#t-us"/></svg></span>
+      <img src="media/duo-post-1080.webp" srcset="media/duo-post-640.webp 640w, media/duo-post-1080.webp 1080w" sizes="50vw" alt="Manos realizando masaje postoperatorio sobre el abdomen" loading="lazy">
       <span class="duo__lab"><span data-i18n="duo.a">Recuperación postoperatoria</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </button>
     <button type="button" class="duo__card" data-cat="1">
-      <span class="care-art care-art--sculpt" aria-hidden="true"><svg viewBox="0 0 96 96"><use href="#t-wood"/></svg></span>
+      <img src="media/duo-moldeo-1080.webp" srcset="media/duo-moldeo-640.webp 640w, media/duo-moldeo-1080.webp 1080w" sizes="50vw" alt="Maderoterapia corporal con rodillo sobre el abdomen" loading="lazy">
       <span class="duo__lab"><span data-i18n="duo.b">Moldeamiento y reducción</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </button>
   </div>
@@ -1021,7 +1033,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 <section class="cab" id="tecnologia">
   <div class="wrap cab__grid">
-    <figure class="cab__fig wipe"><span class="care-art care-art--scan" aria-hidden="true"><svg viewBox="0 0 96 96"><use href="#t-scan"/></svg></span></figure>
+    <figure class="cab__fig wipe"><img src="media/tecnologia-detalle-1080.webp" srcset="media/tecnologia-detalle-640.webp 640w, media/tecnologia-detalle-1080.webp 1080w" sizes="(min-width:980px) 46vw,100vw" alt="Equipo de análisis facial de la cabina" loading="lazy"></figure>
     <div class="cab__copy">
       <p class="kick fx" data-i18n="cab.kick">Así empieza tu plan</p>
       <h2 class="title st" data-i18n-html="cab.title"><span class="sa">Tecnología</span> <span class="sb">de <em>cabina</em></span></h2>
@@ -1302,17 +1314,16 @@ const COMBOS = [
  {n:{es:'Bigote, axilas, brazos y piernas completas',en:'Upper lip, underarms, full arms and full legs'},p:300,s:115}
 ];
 const TREAT = [
- {art:'facial', icon:'t-scan', n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
- {art:'laser', icon:'t-led', n:{es:'Luz LED',en:'LED light'}, cat:1},
- {art:'body', icon:'t-metal', n:{es:'Masaje corporal',en:'Body massage'}, cat:1}
+ {img:'media/servicio-led-detalle.webp',alt:{es:'Luz LED sobre el abdomen',en:'LED light over the abdomen'},n:{es:'Luz LED',en:'LED light'},cat:1},
+ {img:'media/servicio-tile-masaje-1080.webp',alt:{es:'Masaje manual sobre el abdomen',en:'Hands-on abdominal massage'},n:{es:'Masaje corporal',en:'Body massage'},cat:1}
 ];
 const AREAS = [
- {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, art:'recovery', icon:'t-us', cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
- {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, art:'body', icon:'t-wood', cat:1, items:() => SVC.corporal.map(x => L(x.n))},
+ {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/servicio-postoperatorio-1080.webp',alt:{es:'Masaje postoperatorio sobre el abdomen',en:'Post-op abdominal massage'}, cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
+ {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/servicio-corporal-1080.webp',alt:{es:'Masaje corporal sobre el abdomen',en:'Abdominal body massage'}, cat:1, items:() => SVC.corporal.map(x => L(x.n))},
  {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, art:'facial', icon:'t-micro', cat:2, items:() => SVC.facial.map(s => L(s.n))},
- {n:{es:'Depilación láser',en:'Laser hair removal'}, art:'laser', icon:'t-laser', cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
- {n:{es:'Combos de láser',en:'Laser combos'}, art:'combo', icon:'t-rf', cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
- {n:{es:'Maquillaje',en:'Makeup'}, art:'makeup', icon:'i-spark', cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
+ {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/servicio-laser-detalle.webp',alt:{es:'Detalle de depilación láser en la axila',en:'Close-up of underarm laser hair removal'}, cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
+ {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/servicio-combos-detalle.webp',alt:{es:'Aplicador de depilación láser durante el tratamiento',en:'Laser hair removal applicator during treatment'}, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
+ {n:{es:'Maquillaje',en:'Makeup'}, img:'media/servicio-maquillaje-1080.webp',alt:{es:'Brocha de maquillaje en la mano',en:'Makeup brush in hand'}, cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
 ];
 const TEAM = [
  {h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
@@ -1323,8 +1334,8 @@ const TEAM = [
 const NEWS = [
  {art:'event', icon:'i-spark', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
  {art:'location', icon:'i-pin', a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
- {art:'body', icon:'i-ig', a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
- {art:'social', icon:'i-fb', a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
+ {img:'media/n-detalle-640.webp',alt:{es:'Aparatología corporal sobre el abdomen',en:'Body treatment equipment on the abdomen'}, a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
+ {img:'media/n-letras-640.webp',alt:{es:'Detalle del espacio de Leidy Román',en:'Detail of Leidy Román’s treatment space'}, a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
 ];
 const REVIEWS = [
  {q:'Yo le pregunté de todo un poco y ella no me dejó ninguna duda… Se las recomiendo al mil. Tremenda persona y profesional.', en:'I asked her a bit of everything and she left me without a single doubt… I recommend her a thousand percent. An amazing person and professional.', who:'Abigail', s:{es:'Limpieza facial profunda',en:'Deep facial cleansing'}},
@@ -1353,6 +1364,7 @@ function group(root) { const kids = Array.from(root.children), done = root.datas
 
 /* ---------- hero ---------- */
 function careArt(x) {
+  if (x.img) return `<img src="${x.img}" alt="${esc(L(x.alt))}" loading="lazy" decoding="async">`;
   return `<span class="care-art care-art--${x.art}" aria-hidden="true"><svg viewBox="0 0 ${x.icon.startsWith('t-') ? '96 96' : '24 24'}"><use href="#${x.icon}"/></svg></span>`;
 }
 function renderPress() {
