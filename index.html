@@ -57,7 +57,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--silk);color:var(--t1);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
-img{display:block;max-width:100%}
+img,video{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit}
 h1,h2,h3,h4,p,figure,ul,ol,blockquote,dl{margin:0}
@@ -550,7 +550,11 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .badge .core{width:43%;height:43%;object-fit:contain;transition:opacity .3s}
 .badge:hover .core{color:var(--gold-deep)}
 
-/* specialties: decorative graphics without session footage */
+/* Original permitted procedure clips: pause when outside the viewport. */
+.duo__card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.6,.2,1)}
+.duo__card:focus-visible video{transform:scale(1.12)}
+@media (hover:hover){.duo__card:hover video{transform:scale(1.12)}}
+
 .duo__card::after{z-index:1}
 .duo__lab{z-index:2}
 .spec .tech{background:var(--silk)}
@@ -821,7 +825,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .hcopy h1{font-size:clamp(38px,4vw,60px);line-height:1.12;max-width:8em;text-wrap:balance;text-shadow:none}
 .hcopy h1 em{color:#8a6938}
 .hcopy .eyebrow{font-size:11px;line-height:1.6;max-width:24em;letter-spacing:.08em;color:#625d54}
-.hmain .badge{left:clamp(24px,3vw,44px);right:auto;bottom:28px;width:90px;background:var(--ink);color:var(--gold-soft)}
+.hmain .badge{left:auto;right:clamp(14px,1.7vw,24px);bottom:28px;width:90px;background:var(--ink);color:var(--gold-soft)}
 .care-art{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 75% 18%,#77715f 0,transparent 56%),linear-gradient(145deg,#232824,#111613);color:#d6c18e}
 .care-art::before{content:"";position:absolute;inset:12%;border:1px solid currentColor;opacity:.14;transform:rotate(-12deg);border-radius:48% 52% 60% 40%/36% 65% 35% 64%}
 .care-art::after{content:"";position:absolute;inset:-30%;background:repeating-linear-gradient(120deg,transparent 0,transparent 72px,rgba(221,204,158,.055) 73px,transparent 74px)}
@@ -846,7 +850,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 @media(min-width:980px) and (max-width:1199px){.hero__grid{height:520px}.hcopy h1{font-size:40px}.hcopy{padding-left:28px}.hcopy .eyebrow{font-size:10px}}
 .treat__frame>img{width:100%;height:100%;object-fit:cover;opacity:1;transform:none}
 .duo__card>img{width:100%;height:100%;object-fit:cover}
-.duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.62),transparent 55%)}
+.duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.45) 0,rgba(0,0,0,0) 32%)}
 @media(min-width:561px) and (max-width:979px){
  .hmain{aspect-ratio:16/10;min-width:0;width:100%}
  .hcopy{padding-bottom:70px}.hcopy h1{font-size:clamp(34px,5.2vw,48px)}
@@ -859,7 +863,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
  .hcopy .eyebrow{font-size:9px;line-height:1.5;max-width:30em}
  .hmain__photo{grid-column:1;grid-row:2;width:90%;height:auto;aspect-ratio:2650/2958;justify-self:end;margin-top:8px}
  .hmain__portrait{object-position:center bottom;object-fit:contain}
- .hmain .badge{left:18px;right:auto;bottom:18px;width:76px}
+ .hmain .badge{left:auto;right:18px;bottom:18px;width:76px}
 }
 
 </style>
@@ -953,11 +957,11 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 <section class="spec" id="especialidades" data-i18n-aria="duo.aria" aria-label="Especialidades">
   <div class="duo">
     <button type="button" class="duo__card" data-cat="0">
-      <img src="media/duo-post-1080.webp" srcset="media/duo-post-640.webp 640w, media/duo-post-1080.webp 1080w" sizes="50vw" alt="Manos realizando masaje postoperatorio sobre el abdomen" loading="lazy">
+      <video class="duo__v" muted loop playsinline preload="none" disablepictureinpicture poster="media/duo-post-1080.webp" data-lg="media/duo-post-1080.mp4" data-sm="media/duo-post-720.mp4" aria-hidden="true"></video>
       <span class="duo__lab"><span data-i18n="duo.a">Recuperación postoperatoria</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </button>
     <button type="button" class="duo__card" data-cat="1">
-      <img src="media/duo-moldeo-1080.webp" srcset="media/duo-moldeo-640.webp 640w, media/duo-moldeo-1080.webp 1080w" sizes="50vw" alt="Maderoterapia corporal con rodillo sobre el abdomen" loading="lazy">
+      <video class="duo__v" muted loop playsinline preload="none" disablepictureinpicture poster="media/duo-moldeo-1080.webp" data-lg="media/duo-moldeo-1080.mp4" data-sm="media/duo-moldeo-720.mp4" aria-hidden="true"></video>
       <span class="duo__lab"><span data-i18n="duo.b">Moldeamiento y reducción</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </button>
   </div>
@@ -1171,6 +1175,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const RM = matchMedia('(prefers-reduced-motion: reduce)');
+const SMALL = matchMedia('(max-width: 760px)');
 const DESK = matchMedia('(min-width: 980px)');
 const WA = '16175482795';
 const BOOKSY = 'https://leidyromanbeauty92.booksy.com/a/';
@@ -1576,6 +1581,22 @@ if (meet && !RM.matches) {
   meet.addEventListener('touchend', release, {passive: true});
   meet.addEventListener('touchcancel', release, {passive: true});
 }
+
+/* ---------- permitted procedure videos ---------- */
+const CLIPS = $$('video[data-lg]');
+let clipsOn = false;
+function startClips() {
+  if (clipsOn) return; clipsOn = true;
+  const saving = navigator.connection && navigator.connection.saveData;
+  if (RM.matches || saving || !('IntersectionObserver' in window)) return;
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if (!v.getAttribute('src')) v.src = SMALL.matches && v.dataset.sm ? v.dataset.sm : v.dataset.lg; v.play().catch(() => {}); }
+    else if (!v.paused) v.pause();
+  }), {threshold: .3});
+  CLIPS.forEach(v => cio.observe(v));
+}
+if (document.readyState === 'complete') setTimeout(startClips, 400); else { addEventListener('load', () => setTimeout(startClips, 400)); setTimeout(startClips, 6000); }
 
 /* ---------- header ---------- */
 const hd = $('#hd'); let ticking = false;
