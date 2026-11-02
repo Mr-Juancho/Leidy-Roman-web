@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap">
-<link rel="preload" as="image" href="media/hero-madero-1000.webp" imagesrcset="media/hero-madero-640.webp 640w, media/hero-madero-1000.webp 1000w, media/hero-madero-1400.webp 1400w" imagesizes="(min-width:980px) 42vw, (min-width:561px) 58vw, 90vw">
+<link rel="preload" as="image" href="media/hero-wide-poster.webp">
 <style>
-/* Layout: clinic magazine grid. Silk header; a black bento opens the page (studio portrait + two side tiles) over a running strip of credentials; then full-bleed paired panels, a silk index of treatment areas, black left/right story blocks, a full-height booking call, client experiences and a black footer. One brand look by choice: black, silk and a little gold. */
+/* Layout: clinic magazine grid. Silk header; a black bento opens the page (cabin film + two side tiles) over a running strip of credentials; then full-bleed paired panels, a silk index of treatment areas, black left/right story blocks, a full-height booking call, client experiences and a black footer. One brand look by choice: black, silk and a little gold. */
 :root{
   --ink:#0B0B0B;
   --ink-2:#1C1B19;
@@ -127,13 +127,16 @@ section[id]{scroll-margin-top:calc(var(--hd) + env(safe-area-inset-top,0px))}
 /* hero bento */
 .hero{background:var(--ink);padding:var(--pad) var(--pad) 0}
 .hero__grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,23.2vw,400px);gap:var(--pad);height:clamp(520px,41.8vw,760px)}
-.hmain{position:relative;overflow:hidden;min-height:0;background:#171815}
+.hmain{position:relative;overflow:hidden;min-height:0;background:#1a1a1a url("media/hero-wide-poster.webp") center/cover no-repeat}
+.hmain video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hmain::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.14) 40%,rgba(0,0,0,0) 62%,rgba(0,0,0,.22) 100%);pointer-events:none}
 .hcopy{position:absolute;z-index:2;left:clamp(20px,3.3vw,48px);right:clamp(20px,3.3vw,48px);top:clamp(22px,4vw,58px);display:grid;gap:clamp(12px,1.9vw,26px);color:#fff;pointer-events:none}
 .eyebrow{font:500 clamp(11px,.98vw,14px)/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase}
 .hcopy h1{font:400 clamp(34px,4.9vw,78px)/1.1 var(--serif);letter-spacing:-.01em;max-width:12.5em;text-wrap:balance}
 .hcopy h1 em{font-style:italic;color:var(--gold-soft)}
 .hcopy h1{text-shadow:0 1px 22px rgba(0,0,0,.28)}
+.vt{position:absolute;z-index:3;left:clamp(16px,1.8vw,26px);bottom:clamp(16px,1.8vw,26px);width:36px;height:36px;border-radius:50%;border:1.5px solid #fff;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.vt svg{width:12px;height:12px}
 .badge{position:absolute;z-index:3;right:clamp(14px,1.7vw,24px);bottom:clamp(14px,1.7vw,24px);width:clamp(92px,9.2vw,132px);aspect-ratio:1;border-radius:50%;border:0;padding:0;background:var(--silk);color:var(--t1);display:grid;place-items:center;cursor:pointer;transition:transform .5s var(--out)}
 .badge .ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
 .badge .ring text{font:500 10.2px var(--sans);letter-spacing:.14em;text-transform:uppercase;fill:currentColor}
@@ -533,7 +536,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 :root{--hd:72px}
 @media (max-width:760px){:root{--hd:64px}}
 
-/* v7 · nine sections in order of importance, titles that meet from both sides, a black seal and treatment graphics */
+/* v7 · nine sections in order of importance, titles that meet from both sides, a black seal and short treatment clips */
 
 /* split titles: the first words enter from the left, the rest from the right */
 .st .sa,.st .sb{display:inline-block;transition:transform 1.25s var(--out),opacity 1s var(--ease)}
@@ -550,11 +553,10 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .badge .core{width:43%;height:43%;object-fit:contain;transition:opacity .3s}
 .badge:hover .core{color:var(--gold-deep)}
 
-/* Original permitted procedure clips: pause when outside the viewport. */
+/* specialties: two slow-motion clips over the black hero, then the technique row */
 .duo__card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.6,.2,1)}
 .duo__card:focus-visible video{transform:scale(1.12)}
 @media (hover:hover){.duo__card:hover video{transform:scale(1.12)}}
-
 .duo__card::after{z-index:1}
 .duo__lab{z-index:2}
 .spec .tech{background:var(--silk)}
@@ -791,6 +793,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
   .ft__status{margin-top:14px}
   .ft__bottom{flex-direction:column;align-items:flex-start;gap:2px;padding-block:20px 30px}
 }
+img.lq,video.lq{background-size:cover;background-position:center;background-repeat:no-repeat}
 
 /* Final studio portraits: preserve the head, hands and original white backdrop. */
 .meet{background:#fff}
@@ -816,56 +819,6 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .tcard h3{padding-top:0}
 .cab__fig{aspect-ratio:1}
 
-/* Editorial portrait: original white backdrop, separate copy and real treatment tools. */
-.hmain{display:grid;grid-template-columns:42% 58%;background:#fff}
-.hmain__photo{position:relative;grid-column:2;grid-row:1;display:block;min-width:0;height:100%;align-self:end}
-.hmain__portrait{width:100%;height:100%;max-width:none;object-fit:contain;object-position:center bottom}
-.hmain::after{display:none}
-.hcopy{position:relative;grid-column:1;grid-row:1;align-self:center;left:auto;right:auto;top:auto;width:auto;padding:0 0 90px clamp(24px,3vw,44px);color:var(--ink);gap:24px}
-.hcopy h1{font-size:clamp(38px,4vw,60px);line-height:1.12;max-width:8em;text-wrap:balance;text-shadow:none}
-.hcopy h1 em{color:#8a6938}
-.hcopy .eyebrow{font-size:11px;line-height:1.6;max-width:24em;letter-spacing:.08em;color:#625d54}
-.hmain .badge{left:auto;right:clamp(14px,1.7vw,24px);bottom:28px;width:90px;background:var(--ink);color:var(--gold-soft)}
-.care-art{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 75% 18%,#77715f 0,transparent 56%),linear-gradient(145deg,#232824,#111613);color:#d6c18e}
-.care-art::before{content:"";position:absolute;inset:12%;border:1px solid currentColor;opacity:.14;transform:rotate(-12deg);border-radius:48% 52% 60% 40%/36% 65% 35% 64%}
-.care-art::after{content:"";position:absolute;inset:-30%;background:repeating-linear-gradient(120deg,transparent 0,transparent 72px,rgba(221,204,158,.055) 73px,transparent 74px)}
-.care-art>svg{position:relative;z-index:1;width:clamp(88px,36%,220px);height:auto;aspect-ratio:1;fill:none;stroke:currentColor;stroke-width:1.05;stroke-linecap:round;stroke-linejoin:round}
-.care-art .d{opacity:.65}.care-art .f{fill:currentColor;stroke:none}
-.care-art--sculpt,.care-art--body{background:radial-gradient(ellipse at 25% 70%,#897251 0,transparent 64%),linear-gradient(145deg,#2f2a22,#151511)}
-.care-art--facial,.care-art--scan{background:radial-gradient(ellipse at 80% 12%,#fff 0,transparent 65%),linear-gradient(145deg,#e7e1d6,#bfb5a2);color:#6f6043}
-.care-art--laser{background:radial-gradient(ellipse at 80% 28%,#61634d 0,transparent 62%),linear-gradient(145deg,#20251e,#111510)}
-.care-art--combo{background:radial-gradient(ellipse at 12% 20%,#7d6b4b 0,transparent 65%),linear-gradient(145deg,#373228,#161612)}
-.care-art--makeup{background:linear-gradient(125deg,#eee8dc,#c8baa1);color:#706044}
-.care-art--recovery::before,.care-art--laser::before{border-radius:28% 72% 35% 65%/58% 32% 68% 42%}
-.care-art--sculpt::before,.care-art--body::before{transform:rotate(28deg);border-radius:20% 55% 28% 72%}
-.care-art--scan>svg{width:42%;max-width:260px}
-.duo__card>.care-art{position:absolute;inset:0}.duo__card>.care-art>svg{width:36%;max-width:240px;margin-top:8%}
-.duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 40%)}
-.treat__frame{position:absolute;inset:0;opacity:0;transition:opacity .65s var(--ease)}
-.treat__frame.is-on{opacity:1}.treat__frame .care-art>svg{width:42%;max-width:120px}
-.afig>.care-art{position:absolute;inset:0}.afig>.care-art>svg{width:26%;max-width:150px}
-.ncard figure>.care-art{position:absolute;inset:0}.ncard .care-art>svg{width:26%;max-width:90px;stroke-width:1}
-.ncard .care-art--social{background:linear-gradient(145deg,#e8e1d5,#c8bea9);color:#75633d}
-.ncard .care-art--location{background:radial-gradient(ellipse at 80% 20%,#747765,transparent 65%),#232923}
-@media(min-width:980px) and (max-width:1199px){.hero__grid{height:520px}.hcopy h1{font-size:40px}.hcopy{padding-left:28px}.hcopy .eyebrow{font-size:10px}}
-.treat__frame>img{width:100%;height:100%;object-fit:cover;opacity:1;transform:none}
-.duo__card>img{width:100%;height:100%;object-fit:cover}
-.duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.45) 0,rgba(0,0,0,0) 32%)}
-@media(min-width:561px) and (max-width:979px){
- .hmain{aspect-ratio:16/10;min-width:0;width:100%}
- .hcopy{padding-bottom:70px}.hcopy h1{font-size:clamp(34px,5.2vw,48px)}
- .hmain .badge{width:76px;bottom:20px}
-}
-@media(max-width:560px){
- .hmain{grid-template-columns:1fr;grid-template-rows:auto auto;aspect-ratio:auto;min-height:0;min-width:0;width:100%}
- .hcopy{grid-column:1;grid-row:1;left:auto;right:auto;top:auto;width:auto;padding:28px 26px 0;gap:15px}
- .hcopy h1{font-size:clamp(32px,8.4vw,43px);line-height:1.1;max-width:11em;text-wrap:balance}
- .hcopy .eyebrow{font-size:9px;line-height:1.5;max-width:30em}
- .hmain__photo{grid-column:1;grid-row:2;width:90%;height:auto;aspect-ratio:2650/2958;justify-self:end;margin-top:8px}
- .hmain__portrait{object-position:center bottom;object-fit:contain}
- .hmain .badge{left:auto;right:18px;bottom:18px;width:76px}
-}
-
 </style>
 </head>
 <body>
@@ -877,6 +830,8 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
   <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.7 6 6.5.6-4.9 4.3 1.5 6.4L12 16.8l-5.8 3.3 1.5-6.4-4.9-4.3 6.5-.6z"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.7 6.3 5.7 11.3 12 12-6.3.7-11.3 5.7-12 12-.7-6.3-5.7-11.3-12-12C6.3 11.3 11.3 6.3 12 0z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15l12-7.5z"/></symbol>
   <symbol id="i-emblem" viewBox="0 0 767 1145"><path fill="currentColor" fill-rule="evenodd" d="M216.6 1139.9C206.6 1138.8 200.7 1137.2 189.5 1132.9C150.5 1117.8 116.5 1075 104.1 1025.5C99.4 1006.6 97.9 989.2 99.1 968.2C100.1 949.4 102.7 934.6 108.1 915C121.1 868.6 143.1 828.9 185.4 776C206.1 750.1 216.3 739 282.1 670.5C323.7 627.2 338 611.7 351.1 596C379.3 562.1 399.7 531.5 415.4 499.5C425.1 479.9 428.5 471.4 436.3 448C445.6 420.2 449.7 399.7 452.6 367C457.6 310 445.5 244.8 418.8 184.5C403.6 150.1 379.1 106.7 361.9 83.3C359.7 80.4 358.4 78 358.9 78C359.4 78 363.2 80.6 367.2 83.8C383.7 97 403.4 121 419.3 147.4C455.7 207.9 476.8 280.5 478.7 352.5C481 439.3 457.2 516.2 402.7 598C393.6 611.7 375.9 635.7 365.3 648.6C352.3 664.6 329.3 692.1 308.5 716.5C263.9 768.9 236.6 807.9 217 847C194.4 892 183.8 933.3 183.8 975.5C183.8 1006.5 188.5 1028.4 200 1051.5C212.9 1077.1 230 1093.2 250 1098.5C257.2 1100.4 271 1100.4 278.5 1098.5C290.5 1095.4 306.5 1086 316.7 1076.1C319 1073.8 321.2 1072 321.4 1072C321.7 1072 321.1 1074.2 320 1077C310.8 1100.2 293.5 1119.6 272.5 1130.2C263.8 1134.6 248.8 1138.8 238 1139.9C226.8 1141.1 226.6 1141.1 216.6 1139.9ZM319.3 1030.4C304.2 1020.3 292 1007.4 282.9 991.8C258.3 949.7 260.8 889.6 289.8 826.5C303.2 797.2 316.2 777.3 370.2 703.6C422.2 632.7 454.7 573.4 477.4 508.1C495.2 456.8 503.6 413.1 504.7 364.8C506.5 289.6 491.2 226.5 453.1 152C425.7 98.2 395.3 55.4 359.1 19.6C350.8 11.4 344 4.6 344 4.5C344 3.5 370.4 9.5 378 12.2C459.1 41.2 530.7 111.5 580.5 211C600.1 250.3 614.6 290.6 625 335.5L629.7 355.5L634.8 355.8C640.8 356.2 647.7 353.1 655.2 346.9C657.8 344.8 660.3 343 660.9 343C664.1 343 662.5 353.7 658.3 361C654.7 367.1 647.8 374.2 639.7 380.3C631.9 386.1 632 384.9 638.5 398.5C651.8 426.6 677.4 450.1 730.5 483.1C758.1 500.2 762.4 504.8 762.4 517C762.4 528.8 755.6 538.3 733 558C712 576.3 708.5 581.5 708.5 594.5C708.5 606.3 711.7 611.3 726.9 623.4C738.6 632.8 741.8 638.2 740.6 646.8C739.4 655.6 732.4 663.9 719.7 671.7L713.9 675.3L720.2 678.4C729.2 682.8 737.4 691.2 739.4 698C741.5 705 741.4 708.5 738.9 714C736.3 719.7 733.4 722.7 723.4 730.1C715.4 736 713 739 713 743.1C713 744.3 715.7 750.9 718.9 757.8C727.9 777.2 730.8 789.8 729 801.6C725.2 826.4 701 845.6 665.2 852.2C649.7 855 621.4 855.1 594.5 852.4C580.9 851.1 567.7 850.5 548 850.5C517.1 850.5 505.9 851.9 482.8 858.6C427.5 874.5 376.8 914.7 347.2 966.1C334.5 988.2 328.8 1007 327.7 1030.2L327.5 1035.9L319.3 1030.4ZM23.1 896C7.2 888.7 0.6 871.8 5.8 851.2C8.5 840.8 15.4 826.5 22.2 817.5C29.7 807.5 45.9 791 57 782.1C79.1 764.3 116 742.5 152.8 725.5C167.3 718.8 207.3 702.2 212.9 700.5C215.6 699.7 216.5 698.6 193.5 724.2C166.4 754.1 148 777.9 114.6 826C103.7 841.7 91.4 858.7 87.3 863.8C74.1 880 61.9 890 48.3 895.6C40.7 898.7 29.5 898.9 23.1 896ZM72.5 738.5C70.3 737.7 68.4 737 68.3 737C68.2 737 67.4 735.7 66.5 734C62 725.4 68.7 712.5 81.9 704.6C96.7 695.7 118.4 691 148.5 690.3L168.5 689.9L165.5 692.5C162 695.5 125.2 720.1 116.5 725.2C96 737.4 81.4 741.8 72.5 738.5ZM173.5 650.5C131.2 642.7 92.7 612.5 75.9 573.9C67.4 554.4 64.6 539 65.3 517C65.9 499.7 68.7 486.7 75.5 469.5C88.8 435.9 117.6 407.3 151.4 394.1C166.1 388.3 176.5 386.7 193.5 387.3C205.8 387.7 208.6 388.2 216.2 390.8C221 392.5 227.5 395.2 230.7 396.9C244.4 404.3 260.7 421.6 267.2 435.8C277.2 457.7 276 486.2 264.3 504C257.1 514.9 244.2 526.3 234.5 530.5C228.2 533.2 218.8 535.7 212.4 536.5C200.9 537.8 187.2 532.9 178.3 524.2C173.3 519.4 169 511.1 169 506.2L169 502.9L175.7 508.6C183.4 515.2 190.4 518.6 198.9 520.1C226.7 525 255.1 495.8 251.1 466.5C247.9 443.6 232.2 425.2 209.5 417.9C200.4 414.9 182.8 414.6 173 417.2C156.3 421.7 136.2 435.2 125.2 449.1C109.8 468.7 100.5 496.7 102.4 517.9C105.5 552.7 124.3 580.2 154.5 594.6C170.7 602.3 176.7 603.5 198.5 603.5C219.5 603.4 226.9 602.2 242.6 596C267.2 586.3 290 570.2 312.7 546.6C357.3 500.1 390.6 429.8 400.4 361C405.8 323.1 405.3 287.2 398.9 248.5C393.3 214.9 378.6 170.4 361.4 135.7L355.9 124.5L362.8 131.6C385.4 155.2 409.2 202.1 420.5 245.2C428.5 276.1 431.9 299.8 432.7 332.5C433.6 366.1 431.3 388.5 423.8 419C410.8 472.6 387.4 521.7 356 561.1C336.5 585.5 314.4 606.4 292.8 620.9C273.8 633.7 248.4 644.7 227.8 649.2C215.2 651.9 185.1 652.6 173.5 650.5ZM291.3 427.6C279.1 423.7 269.4 412.3 265.7 397.4C262.2 383.3 262.9 371.4 268.2 357.5C273.7 343 280.2 334.6 304.9 309.9C329.2 285.7 333.2 280.9 341 267.9C352.4 248.7 359.9 218 360 189.5C360.1 181.3 360.3 181.6 366 195.6C373.1 213 379.4 236.5 383.6 261.5C386.8 279.9 387.9 310.7 386.1 327.9C382.9 358.5 371.4 384.3 352.6 403.3C344.9 411.1 331.7 420.5 323.7 423.9C312.2 428.9 299.9 430.2 291.3 427.6ZM286.5 290.2C276.3 285.4 270.9 273.6 273 260.2C275 247.7 282 235.5 299.3 214.7C311.8 199.6 315.3 194.6 319.5 185.9C323.8 176.7 325.9 168.8 326.7 158.7L327.3 150.9L330.1 153.6C333.6 157 338.9 165.7 341.8 173C346.4 184.6 347.4 190.7 347.4 207C347.5 220.6 347.1 223.8 344.7 233.4C336.7 265.3 315.6 290.6 296.1 291.7C292.1 292 289.3 291.5 286.5 290.2Z"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M4 19.5l1.2-3.6A8 8 0 1 1 8.4 19z"/></symbol>
 
@@ -922,13 +877,15 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 <section class="hero" id="inicio" aria-label="Leidy Román Beauty">
   <div class="hero__grid">
     <div class="hmain">
-      <picture class="hmain__photo">
-        <img class="hmain__portrait" src="media/hero-madero-1000.webp" srcset="media/hero-madero-640.webp 640w, media/hero-madero-1000.webp 1000w, media/hero-madero-1400.webp 1400w" sizes="(min-width:980px) 42vw, (min-width:561px) 58vw, 90vw" alt="Leidy Román sonriendo con uniforme blanco y herramientas de maderoterapia" data-i18n-alt="hero.photo" width="1400" height="1563" fetchpriority="high">
-      </picture>
+      <video id="vid" autoplay muted loop playsinline preload="auto" disablepictureinpicture data-i18n-aria="video.alt" aria-label="Leidy en su cabina durante un facial, un tratamiento corporal y una sesión de láser">
+        <source src="media/hero-wide-sm.mp4" type="video/mp4" media="(max-width: 760px)">
+        <source src="media/hero-wide.mp4" type="video/mp4">
+      </video>
       <div class="hcopy">
         <p class="eyebrow" data-i18n="hero.eyebrow">Estética corporal, postoperatoria y facial en Greenville, SC</p>
         <h1 data-i18n-html="hero.title">El lujo de sentirse <em>bien en tu propia piel</em></h1>
       </div>
+      <button type="button" class="vt" id="vt" data-i18n-aria="video.pause" aria-label="Pausar video"><svg><use href="#i-pause"/></svg></button>
       <button type="button" class="badge js-book" data-i18n-aria="badge.aria" aria-label="Agendar una cita con Leidy Román">
         <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ringPath" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs><text><textPath href="#ringPath" textLength="280" lengthAdjust="spacing" id="ringText">Leidy Román · Agenda ·</textPath></text></svg>
         <img class="core" src="media/marca-isotipo-dorado.png" alt="" aria-hidden="true">
@@ -1039,7 +996,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 
 <section class="cab" id="tecnologia">
   <div class="wrap cab__grid">
-    <figure class="cab__fig wipe"><img src="media/tecnologia-detalle-1080.webp" srcset="media/tecnologia-detalle-640.webp 640w, media/tecnologia-detalle-1080.webp 1080w" sizes="(min-width:980px) 46vw,100vw" alt="Equipo de análisis facial de la cabina" loading="lazy"></figure>
+    <figure class="cab__fig wipe"><img src="media/tecnologia-detalle-1080.webp" srcset="media/tecnologia-detalle-640.webp 640w, media/tecnologia-detalle-1080.webp 1080w" sizes="(min-width:980px) 46vw, 100vw" alt="Equipo de análisis facial de la cabina" loading="lazy" decoding="async"></figure>
     <div class="cab__copy">
       <p class="kick fx" data-i18n="cab.kick">Así empieza tu plan</p>
       <h2 class="title st" data-i18n-html="cab.title"><span class="sa">Tecnología</span> <span class="sb">de <em>cabina</em></span></h2>
@@ -1175,8 +1132,8 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const RM = matchMedia('(prefers-reduced-motion: reduce)');
-const SMALL = matchMedia('(max-width: 760px)');
 const DESK = matchMedia('(min-width: 980px)');
+const SMALL = matchMedia('(max-width: 760px)');
 const WA = '16175482795';
 const BOOKSY = 'https://leidyromanbeauty92.booksy.com/a/';
 const IG = 'https://www.instagram.com/leidyromanbeauty/';
@@ -1188,7 +1145,7 @@ const T = {
 es: {
  'skip':'Saltar al contenido','close':'Cerrar','lang':'Idioma',
  'nav.contact':'Escríbeme por WhatsApp','nav.menuBtn':'Menú','nav.aria':'Principal','nav.postop':'Postoperatorio','nav.body':'Corporales','nav.facial':'Faciales','nav.laser':'Láser','nav.about':'Sobre Leidy','nav.academy':'Academy','nav.reviews':'Opiniones','nav.book':'Agendar',
- 'hero.photo':'Leidy Román sonriendo con uniforme blanco y herramientas de maderoterapia',
+ 'video.pause':'Pausar video','video.play':'Reproducir video','video.alt':'Leidy en su cabina durante un facial, un tratamiento corporal y una sesión de láser',
  'hero.eyebrow':'Estética corporal, postoperatoria y facial en Greenville, SC','hero.title':'El lujo de sentirse <em>bien en tu propia piel</em>','hero.wa':'Escríbeme por WhatsApp',
  'badge.text':'Leidy Román · Agenda ·','badge.aria':'Agendar una cita con Leidy Román',
  'treat.k':'Cuidado profesional','treat.n':'Tratamientos',
@@ -1227,7 +1184,7 @@ es: {
 en: {
  'skip':'Skip to content','close':'Close','lang':'Language',
  'nav.contact':'Message me on WhatsApp','nav.menuBtn':'Menu','nav.aria':'Main','nav.postop':'Post‑op','nav.body':'Body','nav.facial':'Facials','nav.laser':'Laser','nav.about':'About Leidy','nav.academy':'Academy','nav.reviews':'Reviews','nav.book':'Book',
- 'hero.photo':'Leidy Román smiling in a white uniform with wood therapy tools',
+ 'video.pause':'Pause video','video.play':'Play video','video.alt':'Leidy in her treatment room during a facial, a body treatment and a laser session',
  'hero.eyebrow':'Body, post‑op and facial aesthetics in Greenville, SC','hero.title':'The luxury of feeling <em>good in your own skin</em>','hero.wa':'Message me on WhatsApp',
  'badge.text':'Leidy Román · Book ·','badge.aria':'Book an appointment with Leidy Román',
  'treat.k':'Professional care','treat.n':'Treatments',
@@ -1321,16 +1278,17 @@ const COMBOS = [
  {n:{es:'Bigote, axilas, brazos y piernas completas',en:'Upper lip, underarms, full arms and full legs'},p:300,s:115}
 ];
 const TREAT = [
- {img:'media/servicio-led-detalle.webp',alt:{es:'Luz LED sobre el abdomen',en:'LED light over the abdomen'},n:{es:'Luz LED',en:'LED light'},cat:1},
- {img:'media/servicio-tile-masaje-1080.webp',alt:{es:'Masaje manual sobre el abdomen',en:'Hands-on abdominal massage'},n:{es:'Masaje corporal',en:'Body massage'},cat:1}
+ {img:'servicio-tile-facial', alt:{es:'Limpieza facial con discos de algodón',en:'Facial cleansing with cotton pads'}, n:{es:'Facial avanzado',en:'Advanced facial'}, cat:2},
+ {img:'servicio-tile-led', alt:{es:'Luz LED durante un tratamiento corporal',en:'LED light during a body treatment'}, n:{es:'Luz LED',en:'LED light'}, cat:1},
+ {img:'servicio-tile-masaje', alt:{es:'Masaje corporal manual en plano cenital',en:'Overhead view of a hands-on body massage'}, n:{es:'Masaje corporal',en:'Body massage'}, cat:1}
 ];
 const AREAS = [
- {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/servicio-postoperatorio-1080.webp',alt:{es:'Masaje postoperatorio sobre el abdomen',en:'Post-op abdominal massage'}, cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
- {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/servicio-corporal-1080.webp',alt:{es:'Masaje corporal sobre el abdomen',en:'Abdominal body massage'}, cat:1, items:() => SVC.corporal.map(x => L(x.n))},
- {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, art:'facial', icon:'t-micro', cat:2, items:() => SVC.facial.map(s => L(s.n))},
- {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/servicio-laser-detalle.webp',alt:{es:'Detalle de depilación láser en la axila',en:'Close-up of underarm laser hair removal'}, cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
- {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/servicio-combos-detalle.webp',alt:{es:'Aplicador de depilación láser durante el tratamiento',en:'Laser hair removal applicator during treatment'}, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
- {n:{es:'Maquillaje',en:'Makeup'}, img:'media/servicio-maquillaje-1080.webp',alt:{es:'Brocha de maquillaje en la mano',en:'Makeup brush in hand'}, cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
+ {n:{es:'Recuperación postoperatoria',en:'Post‑op recovery'}, img:'media/servicio-postoperatorio-1080.webp', alt:{es:'Masaje postoperatorio sobre el abdomen',en:'Post-op massage on the abdomen'}, cat:0, items:() => lang === 'es' ? ['Masaje postoperatorio','Drenaje linfático manual','Aparatología según tu etapa','Paquete de 10 sesiones · $85 c/u'] : ['Post‑op massage','Manual lymphatic drainage','Equipment for your stage','10‑session package · $85 each']},
+ {n:{es:'Moldeamiento y reducción',en:'Body sculpting'}, img:'media/servicio-corporal-1080.webp', alt:{es:'Masaje corporal sobre el abdomen',en:'Body massage on the abdomen'}, cat:1, items:() => SVC.corporal.map(x => L(x.n))},
+ {n:{es:'Estética facial avanzada',en:'Advanced facial care'}, img:'media/servicio-facial-1080.webp', alt:{es:'Limpieza y masaje facial de una clienta',en:'A client receiving a cleansing facial massage'}, cat:2, items:() => SVC.facial.map(s => L(s.n))},
+ {n:{es:'Depilación láser',en:'Laser hair removal'}, img:'media/servicio-laser-1080.webp', alt:{es:'Depilación láser en la axila de una clienta',en:'Laser hair removal on a client’s underarm'}, cat:3, items:() => [4, 5, 11, 10, 0, 2, 8].map(k => L(ZONES[k].n)).concat([t('d.full')])},
+ {n:{es:'Combos de láser',en:'Laser combos'}, img:'media/servicio-combos-1080.webp', alt:{es:'Sesión de depilación láser con gafas de protección',en:'Laser hair removal session with protective glasses'}, cat:3, focus:'combos', items:() => COMBOS.map(c => L(c.n))},
+ {n:{es:'Maquillaje',en:'Makeup'}, img:'media/servicio-maquillaje-1080.webp', alt:{es:'Detalle de una brocha de maquillaje',en:'Detail of a makeup brush'}, cat:4, items:() => [L(SVC.makeup[0].n), lang === 'es' ? 'Graduaciones y fiestas' : 'Graduations and parties', lang === 'es' ? 'Sesiones de fotos' : 'Photo shoots']}
 ];
 const TEAM = [
  {h:{es:'Esteticista licenciada',en:'Licensed esthetician'}, d:{es:'Con licencia del estado de Carolina del Sur para ejercer la estética.',en:'Licensed by the State of South Carolina to practice esthetics.'}},
@@ -1339,10 +1297,10 @@ const TEAM = [
  {h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
 ];
 const NEWS = [
- {img:'media/expo-vendor-1080.webp',pos:'50% 32%',alt:{es:'Leidy Román en su stand de la Metamorphosis Expo Show',en:'Leidy Román at her Metamorphosis Expo Show booth'}, a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
- {img:'media/n-suite-640.webp',alt:{es:'La entrada de la suite de Leidy Román en Greenville',en:'The entrance to Leidy Román’s suite in Greenville'}, a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
- {img:'media/n-detalle-640.webp',alt:{es:'Aparatología corporal sobre el abdomen',en:'Body treatment equipment on the abdomen'}, a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
- {img:'media/n-letras-640.webp',alt:{es:'Detalle del espacio de Leidy Román',en:'Detail of Leidy Román’s treatment space'}, a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
+ {img:'ultimate-team-portrait', pos:'50% 12%', alt:'Retrato profesional de Leidy Román', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
+ {img:'n-suite', a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
+ {img:'n-detalle', a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
+ {img:'n-letras', a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
 ];
 const REVIEWS = [
  {q:'Yo le pregunté de todo un poco y ella no me dejó ninguna duda… Se las recomiendo al mil. Tremenda persona y profesional.', en:'I asked her a bit of everything and she left me without a single doubt… I recommend her a thousand percent. An amazing person and professional.', who:'Abigail', s:{es:'Limpieza facial profunda',en:'Deep facial cleansing'}},
@@ -1370,22 +1328,18 @@ function reveal(els) { els.forEach(el => { if (el.classList.contains('in')) retu
 function group(root) { const kids = Array.from(root.children), done = root.dataset.seen === '1'; kids.forEach((c, i) => { c.classList.add('fx'); c.style.setProperty('--d', (i * 0.1).toFixed(2) + 's'); if (done) c.classList.add('in'); }); if (!done) reveal(kids); }
 
 /* ---------- hero ---------- */
-function careArt(x) {
-  if (x.img) return `<img src="${x.img}" alt="${esc(L(x.alt))}"${x.pos ? ` style="object-position:${x.pos}"` : ''} loading="lazy" decoding="async">`;
-  return `<span class="care-art care-art--${x.art}" aria-hidden="true"><svg viewBox="0 0 ${x.icon.startsWith('t-') ? '96 96' : '24 24'}"><use href="#${x.icon}"/></svg></span>`;
-}
 function renderPress() {
   const one = t('press').map(([k, a, b]) => `<span class="m-${k}">${esc(a)}${b ? `<i>${b}</i>` : ''}</span>`).join('');
   $('#pressTrack').innerHTML = one + one.replace(/<span class/g, '<span aria-hidden="true" class');
 }
 let ti = 0, tTimer = 0, tHold = false;
 function renderTreat() {
-  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<span class="treat__frame${i === ti ? ' is-on' : ''}">${careArt(x)}</span>`).join('');
+  $('#treatMedia').innerHTML = TREAT.map((x, i) => `<img src="media/${x.img}-1080.webp" srcset="media/${x.img}-640.webp 640w, media/${x.img}-1080.webp 1080w" sizes="(min-width:980px) 25vw, 100vw" alt="${esc(L(x.alt))}" class="${i === ti ? 'is-on' : ''}" decoding="async">`).join('');
   setTreat(ti);
 }
 function setTreat(i) {
   ti = i;
-  $$('#treatMedia .treat__frame').forEach((im, k) => im.classList.toggle('is-on', k === i));
+  $$('#treatMedia img').forEach((im, k) => im.classList.toggle('is-on', k === i));
   $('#treatStrip').textContent = L(TREAT[i].n);
   $('#tileTreat').dataset.cat = TREAT[i].cat;
   $('#tileTreat').setAttribute('aria-label', t('treat.n') + ': ' + L(TREAT[i].n));
@@ -1404,8 +1358,9 @@ function renderTech() {
 /* ---------- treatment areas ---------- */
 let ai = 0;
 function panelHTML(a) {
+  const pos = a.pos ? ` style="object-position:${a.pos}"` : '';
   const act = t('areas.all');
-  return `<div class="apanel"><figure class="afig">${careArt(a)}<button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
+  return `<div class="apanel"><figure class="afig"><img src="${a.img}" alt="${esc(L(a.alt) || '')}"${pos} loading="lazy" decoding="async"><button type="button" class="afig__all" data-act><span>${act}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></figure><ul class="asub">${a.items().slice(0, 8).map(n => `<li><button type="button" data-act>${esc(n)}</button></li>`).join('')}</ul></div>`;
 }
 function renderAreas() {
   $('#areasList').innerHTML = AREAS.map((a, i) => `<li class="${i === ai ? 'is-on' : ''}"><button type="button" class="areas__tab" role="tab" id="atab${i}" aria-selected="${i === ai}" aria-controls="areasPanel" data-i="${i}"><span>${esc(L(a.n))}</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button><div class="areas__acc"${i === ai ? '' : ' inert'}><div>${panelHTML(a)}</div></div></li>`).join('');
@@ -1440,7 +1395,7 @@ function renderTeam() {
 function renderSteps() { $('#steps').innerHTML = t('steps').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); group($('#steps')); }
 function renderProg() { $('#prog').innerHTML = t('prog').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); }
 function renderNews() {
-  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure>${careArt(n)}<figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
+  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure><img src="media/${n.img}-640.webp" alt="${esc(n.alt || '')}"${n.pos ? ` style="object-position:${n.pos}"` : ''} loading="lazy" decoding="async"><figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
   newsArrows();
 }
 function newsArrows() { const tr = $('#newsTrack'), can = tr.scrollWidth > tr.clientWidth + 4; $('#newsPrev').hidden = !can; $('#newsNext').hidden = !can; }
@@ -1459,14 +1414,14 @@ const REVIEW_PHOTOS = [
  ['ultimate-device', 'Leidy Román con un dispositivo de cuidado facial'],
  ['ultimate-team-spheres', 'Leidy Román con masajeadores faciales dorados'],
  ['ultimate-review-crossed-spheres', 'Leidy Román con masajeadores faciales y los brazos cruzados'],
- ['ultimate-review-madero-profile', {es:'Leidy Román de perfil mirando un rodillo de maderoterapia',en:'Leidy Román in profile looking at a wood therapy roller'}]
+ ['ultimate-review-white-madero', 'Leidy Román mostrando herramientas de maderoterapia']
 ];
 let ri = 0;
 function renderReview() {
   const r = REVIEWS[ri], tr = lang === 'en' && r.en, q = $('#rvQ'), [photo, alt] = REVIEW_PHOTOS[ri], image = $('#rvImage');
   image.srcset = `media/${photo}-640.webp 640w, media/${photo}-1080.webp 1080w`;
   image.src = `media/${photo}-1080.webp`;
-  image.alt = typeof alt === 'string' ? alt : L(alt);
+  image.alt = alt;
   q.innerHTML = `<span class="rv__mark" aria-hidden="true">“</span><blockquote><p>${esc(tr ? r.en : r.q)}</p></blockquote><p class="rv__who"><b>${esc(r.who)}</b><i>${esc(L(r.s))}</i></p><p class="rv__meta"><span class="stars" role="img" aria-label="5/5">${STAR5}</span><span>${t('rv.real')}</span>${tr ? `<span class="rv__tr">${t('rv.tr')}</span>` : ''}</p>`;
   q.classList.remove('is-in'); void q.offsetWidth; q.classList.add('is-in');
   $('#rvN').textContent = String(ri + 1).padStart(2, '0') + ' / ' + String(REVIEWS.length).padStart(2, '0');
@@ -1548,12 +1503,12 @@ function applyLang() {
   $$('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if (typeof v === 'string') el.textContent = v; });
   $$('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
   $$('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
-  $$('[data-i18n-alt]').forEach(el => el.alt = t(el.dataset.i18nAlt));
   $$('.js-wa').forEach(a => { a.href = wa(t('wa.default')); });
   $('#clsBtn').href = wa(t('wa.cls'));
   $$('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   const lb = $('#langBtn'); lb.textContent = lang === 'es' ? 'English' : 'Español'; lb.lang = lang === 'es' ? 'en' : 'es'; lb.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
   $('#ringText').textContent = t('badge.text');
+  setVid();
   renderPress(); renderTreat(); renderTech(); renderAreas(); renderTeam(); renderSteps(); renderProg(); renderNews(); renderReview(); renderFaq(); renderHours();
   if ($('#drawer').open) openDrawer(curCat, curFocus);
 }
@@ -1571,6 +1526,14 @@ document.addEventListener('click', e => { const b = e.target.closest('.js-book')
 $$('#sheet a').forEach(a => a.addEventListener('click', () => setTimeout(() => hide($('#sheet')), 150)));
 $('#burger').addEventListener('click', () => show($('#menu')));
 
+/* ---------- hero video ---------- */
+const vid = $('#vid'), vt = $('#vt'); let userPaused = false;
+function setVid() { const p = vid.paused; vt.setAttribute('aria-label', t(p ? 'video.play' : 'video.pause')); vt.innerHTML = `<svg><use href="#i-${p ? 'play' : 'pause'}"/></svg>`; }
+vt.addEventListener('click', () => { if (vid.paused) { userPaused = false; vid.play().catch(() => {}); } else { userPaused = true; vid.pause(); } });
+vid.addEventListener('play', setVid); vid.addEventListener('pause', setVid);
+if (RM.matches) { vid.removeAttribute('autoplay'); vid.pause(); }
+if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (RM.matches || userPaused) return; if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause(); }), {threshold: .1}).observe(vid);
+
 /* ---------- meet tile: on touch screens Leidy steps forward while a finger rests on her ---------- */
 const meet = $('.meet');
 if (meet && !RM.matches) {
@@ -1582,7 +1545,7 @@ if (meet && !RM.matches) {
   meet.addEventListener('touchcancel', release, {passive: true});
 }
 
-/* ---------- permitted procedure videos ---------- */
+/* ---------- treatment clips: they load after the hero film and play only while in view ---------- */
 const CLIPS = $$('video[data-lg]');
 let clipsOn = false;
 function startClips() {
@@ -1602,7 +1565,21 @@ if (document.readyState === 'complete') setTimeout(startClips, 400); else { addE
 const hd = $('#hd'); let ticking = false;
 addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; hd.classList.toggle('is-scrolled', scrollY > 4); }); }, {passive: true});
 
-/* Load the approved still photographs after the initial layout. */
+/* ---------- photos: a blurred placeholder until each one arrives, and all of them fetched right after the page loads ---------- */
+const LQ = {"certificado":"data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACQBACdASoUABQAPu1srVIppaQiqAgBMB2JQBYdgYgO6819UUjiPlw159DS3YAA+KKavN9HNCR6/Bs57KpdP7WL08yWCdRMEo/dvM18IqQCZR+nnepshYmHYXCVTMgHPagctu5bxOC7DhJvz3p5kiSUu+7N1SLZEJnSw6nSZBFOjpKjtFA1rVuHmun8tznF7UECC0t8CtNWAA==","duo-moldeo":"data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAAAwBQCdASoUABQAPu1srVIppaQiqAgBMB2JZAC7ISIIAATbLfowq6PQBjgyNRbc+mPdMADLHu8rS1wAut6DA/WoS2cqVKiKQDtPAxEGdFmtCxwVN2nRizfX0pZMT4YJaMviIuzxh2T0GYsuJ3VxzH4iGox9D3K2ZkdHJ9PM86bFuga6J2HTgf1ptdCydzEW9P2zk+Uu73d3T60LopnFPGOxf5XiPBu3dfAPEMqYc6zWlwXkKLrWix7nOYu00AAAAAA=","duo-post":"data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAADQBACdASoUABQAPu1ur1IppiQiqAgBMB2JQBahIfAyN05c9kceXLV1GAp33gk2AAD+WIRqIF/vtNiklPzeZ511o0IzYltxCt39L9Kew33dHhicCDEIop2d+veZd0VkhaSM25syUgOZ9bsaaWzeURkf5W//5T7hlKJL7sCNnSNqGOERu+RxoifSlBTzoD6UyfD6YMuVI718yV/i4E/eH3XKL12YpxkCZxW1JiLzPjMi0NB4UCjdsAAA","expo-booth":"data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAADwBACdASoUABEAPu1wr1IppiQiqAgBMB2JZwC7AYxYTkMIAGefNXGAccxtrXLDv3AA/sH6xto1UsBxqKvZmrepL4OzzM3In149tiLtNDLxx6HnkRnH8V5BcKDCkgHq7/7v/SiTeyRuqWLq/CaiR8+93e+8mAKl0AJ9WQiX9u6CBqWx7xd9jwpcaQ+DVb0X5tAvrvBuniDEJcJp9cIVCAU9J+t4PElhpoDODl6AAAA=","expo-vendor":"data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAABQBQCdASoUABQAPu1ur1KppiQiqAgBMB2JYgC7AYyodKfmNbF0SGHIxmWZ5Eo7NOa6IlgA/q3VnN8iOzMeJie05p7/rKGTdNTp7edWQ+rvskuVTP1dFzrpvDPsTbNlPoS8zWMlDI8zZUWexnKAKJDlMlDiyyUgSR2w+TZ82bk3+jzlYa4Dmr2sTmgdqvEjJibub8kEduTbpSNhSjyKKm5OC2aRuZiI/OWnmx4xDGjm40VvgIk/thbzTuCqALWIiCAAAA==","facial-limpieza":"data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAACwBQCdASoUABkAPu1qrVEppaQiqAqpMB2JYgCdMwnBqt4exacZ4HgVJt05DQQwEm8x2OCl34AA/nwJorRDDEwBtdUZ1XXGm53sLdgencc8CW1GE/rQM4BXg1LoeA8QRz5JEjtJzzedxF6MCSglnfnr1n7ahazIYtV4td0Uf7gwdSJA9Kzi90vzklaqtgkCi55gDE4IG9uy27YjbTIPlBuVQyHf41T474qgV+26RmoO6zpWAqTR1gEI568r+BNyKtlo7S8Se/bY/S4hEhp10kALApjAYoLAAAA=","hero-wide-poster":"data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoUAAsAPu1iqU2ppaQiMAgBMB2JYwAD5UH3WNxbqSSjd4tIbqAA/p/MkXdDs2L3G+TsHWZGxNl60oxdX1X0m1bqlh69bEA423MzsRYV3jDG+Ay/cnkvQdIYAxpk66qJug/SCZMCm770LFqufLmfHN7CoGH9irUD5CYXlxYAAAA=","laser-leidy":"data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACwBQCdASoUABkAPu1ur1KppiQiqAgBMB2JZQDE2YzubuunVPYzdkLXkTrXZlWK/2gyMWxCQAAA/sIMPjcqlh4tOPgQoIWdwHVAHCw7y10xdi93hE76xDGusSv6WoM1TLQbN3rxlYcf5xF+ghORQTDdlswf3Zh7/sMHIHIcJ0XClHA0nTvXWGrXKimp6re7nr4pAEYLysF3birSqN5okzkGVpsj7iMrxC46D9Y3EW7yTQ8TcgjssRoflqOQof1vxNXoHsrrMJ4HukQGkTYLnOoF83mY5ar1/d+oKDwgEPgAsGAA","leidy-habla":"data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAwBQCdASoUABQAPu1srlIppaQiqAgBMB2JYgCdMs6AAAQgCHEO3Ic1CaJ61oqnWygN4AD+3t14JxgKUnvfAzREcAYvnKV1coew3rBYUNf9D2FqtbowpaKWl743RFWTqLn3oFhCjWsfqfnhcnsXKSKHdEU/493gC2KDeUwFY8ns08ceHfTh8W3ODtCvW6KlSDrH327hdB6CmskTTmQ8GZQfnwsxXjbol9Is423rGH59K7xstcHaRARsQvR47wXMWOP4AAAA","leidy-intro":"data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUABsAPuFUpU2opCOiN/qoARAcCWMAwcwh34650Qha+quNwKmvQAD+9Mrbt4vLyMhPk/mevTWui0ycMUT1ucbgY91LRYdO2VT8FvICCc3b7X+qlRS0Co9KGE64BwDO069aExhF6wXzO19uCuSKmWuFoS/R98AA","leidy-stand":"data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAABQBgCdASoUABkAPu1sq1EppiOiqAqpMB2JZACpJvVAymqJdnPXhKHLkwvZVPQQZ48U5K2K5FtNNtbseAD+3Rnxgr/b92geIhq5I/qxlDy5OtHS75Ri+ROCrTUw+pOnF5rIV5kSrwBZITQzqPzAcBpv5bcqfaJt2yWrbxf6vQqTxO7am26LYG18a464vdYyfPxy0FrYMEc1752q0ZP8Fg1qyyDaDA6/47jdJ2wWnBrTs2k56ZFO7OHLr4oZsnLm7Iex+RpNHJ5g3O62jTgpCx2lZqdjmKtJaDS7RjrVoXZ+frc4nov76v+FHWuqJfptJCxMhgocAAA=","n-detalle":"data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABQBQCdASoUABEAPu1sq1EppaOiqAqpMB2JQBOmW9dp3OwqgDhP91EEdCL6aMOYmyLDbhAA8hxQsXcpX90kRW1dphGWyTQt5wVuyjbo6Q5dXDxwRyvUmQTX+J+ZIwQuQ77yhpSOtFScY7usSiuaeS5kDHi/P8MXHg8dM5Oiupscp6AFVEIGHSSOMmwJpA/AqbiBObQ5MvdLTgDAqhCkLQXxCQnMCUWS7ymvm+0eLvpNwAAA","n-letras":"data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQAwCdASoUABEAPu1krE4ppaSiKA1RMB2JZwC+wAbOQJQlSMNPlcAA/sjgFNW5a6FaXdHKTc9pCWpMlr+CMmWv8hlu3lpZ4bs6uNOpCKlwZPMdwHYShXQ6K9R7iqptIA3GaiOtys9Rd49KnJ5fAsggAAA=","n-suite":"data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoUABEAPu1oqU+ppiOiKA1RMB2JZQCw7AulLMsXAVpXRyCWS4AAyrRouDwK8pxHqE24h+hlSxZ8Tsm+/c5Hl2PfWkQZ/G2gGoCSn39R6Bt9fH7j5osbIawzhmEYyaDZXz901KWC828AAA==","og":"data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwAwCdASoUAAoAPu1iqU2ppaOiMAgBMB2JZQAAQbUw/XudcAAQgAD+70iUIrUx7msaDFpI0ELwcNir3Xri3wJa9ld/4rleUJnwrq9dAhsInB7HQ7a8YKEY7moIIrDjFhNUkxYNnfnqzAHGmTC6gwAA","retrato-azul":"data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADQBACdASoUABQAPu1urlIppiQiqAgBMB2JYwCo9BDhxZqu9IC8NkY9ZCAuZ/MA2AD+w5Taah1SobiKHCl9Qvb+yhgE7t5GTMPTDoYmiufhQ7lSSo+8ymC5qmtH6nu1S3WsNNqslWmbj5alYhXbz/0lxqUwfpjzTHXDe9YJVxrhEEvruMFPI/7TiO9Y/3CudnF5cjYOsBGKdDqs/QiamzmHsui3FDQ34P4AAA==","rv-1":"data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAAAwBQCdASoUABkAPu1srFEppaQiqAqpMB2JYgCo9YyKK9iAsLkt7jkcG4KC546HPviCAAD+jA8SHPuJfGkzM594FqAOt7+iVyw8MaZpRt9ZdTXZD9IRNQofkju6mwH253Pvr6ikQDqqMUST8U1oaKUTn34muCfO++d0LMBRZmJ/joUOkGFb4EI6pXKMdaoyFtt8jXYgX7hgtdpPdiS/Apvst3opE+L1ySZS1QtIkd0HAZv3jDlLcZcPylZgxlSyAaHea0cqHnjgoMY7NRxkAA==","rv-2":"data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAABQBQCdASoUABkAPu1qrVCppaQiqAqpMB2JQBOmae+EBISkI7XwaGU8ijCuECmzOZ1rgAAA/pFyO8xvrchn8KXwYHSyEDvTx5BIAAQ5TSEnnHN1d4O0Vr55UckczWg0xgfD382DQJBY2oGEAg+jVb4+q7Vu1dVOpd31m3FKmsjTMYZp3oWiNJF5V1ht+FpHlY+EDfC2gK1rQ3mVeh7vU2PlxZ4f2XbkNM2TmGkI7FkeW/94PyYASVdUElAAAA==","rv-3":"data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAAAwBQCdASoUABkAPu1qrlCppaQiqAqpMB2JYwDGnNoJ/gHhVuiyFr8mgX8Qx8F22ebLgAD92YCNUGVbkTTdoLbQttCEL+BmXbW1z2BKRDmF9OqSj2yrP62YoLJUcd1GohIhE5wFeOgu1aGYh4IaK9YAOe2yYWzhfiWXwcvtoB99yyVU6jvDdO1F2jaRSci9naocDtthHpjOHHOD8vGI0qMwk7GIxSdEhAmmEREx/h/ZCHk9JhLfG+CP96i+8PhKsG4z/hpq6ePLwOCUJs0hMHyAAAA=","rv-4":"data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAAAwBQCdASoUABkAPu1ur1IppiQiqAgBMB2JYgCo9Yv+cVDMbg7Z6o5CUkDSUrytheDgAAD+Pg2Gpx9QaNNKK4II7hxn9dkWiM/08/S+Mpxsp1XHyPEEd3hXn0RVa05/cyo84XtFJZkhcEuoAYDyeJhnhE5wd/vNK1kCbzI+0yuXtTcYaTJVV+qzEZTXI54WT3yUBkgp9OYAgtOFslrRcc+v/3lz+c8Frygvoveb8sdVtkQztSsL2EODKLDc7G4bIgmlSSGRaG2E/Cb4ZBK/1lVDKuScDVaY3ZwAAA==","valoracion":"data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAABwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JYwDDRf/l2CMCCtJ+t4CNjYFVnkFwzmKyldMQAP630ZU2vnG+h5/3uIyqxUQMyLG7pPlserOaqionQrnDLjkZ26c1gWbMJ38dYw29Fk+p4E3k6lOcnT0DNZCsDMAnLXsfa2n9vms/1icShSJs0JPHZfyaIXvqVSKGaYLmc8d0qS6tRkd0w6ORWve4VXSnHurm1tRzAYQ/4k+2Bu3L51EQRnqme7QbZWMr1wbRn6Ei7LgA","w-aparato":"data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JaACw7YwwzS1sV/xBQHhrAAD8VaeVlCwJpxLDosYBKDnHcYBd/731k7XtO45K73X0xOfy+EpdeG+MCZawOE1eLHmDdIga94C1mjronw9tIsZNq1DzyuW0cSxQ4fAFKesT8xMfuPIoAA==","w-cabina":"data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JZQCdAYv0iQfodWwqq5eQgADiM15aZt71ZjSxMjVocL1LP50T6YVdGc0mqhXmp+YK4ESLj12WQ9QZt8MltUqtsE9vjuB2hHqqFbGVj2l4092cCZOvm6+ce4JzBMwjKMh1YAAA","w-estudio":"data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwC7MoAltghiHlBJjeAA4nAIkuanrjLHxpljsOutDOMhHOrF8OfogCthr0ngYYtWLCfuFHVoQG1My+icetglCk9a6diCJ3JhFpSVFvatXD3uaH6S7X0epI3XxLtagAA=","w-facial":"data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYgCsACDkSfI52KQk7wAA+OXtBMD8R93PXFBZhmlWTvOQPc27AMCjovSq8W8JBaV9o6OJkp1X+cHpYHJ5oJKjZyA0jFCXGv8dTYRcb1Vk1IR3tPEkP94d9fb0BSy5+74x+aUAAAA=","w-laser":"data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADQAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwCdAYxiUg7VFj3EzAAA/OGwirbqJl/nKN58Sj2O+KcRgHmIt8ztTWuydwA+JVWJAscIsOxpDMYNFRJPwuXwwyKlHuQ5rtpeuZTKttrYVxsTpsl+zTkJFnm1yzdeiVi70AhGIAA=","w-laser-2":"data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JZgCdMoADUp/T4rrreDi0OAD+3PLbBHY+C008va4aoiS+4RKlhXMNAUjgfrNCC1oJqJW7G9DW3tfkS+mtnNu+KBM9UrSDFgK3hv/XibtICITZQgAAAA==","w-led":"data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JbACdMoMYADRuyb40VdcnAAD+5dajCV7RnL0VGxuzKJIgYZkQ0PUxhsmdgyRs0e6slSV+UKL7RcBst4OyCPj9If6VbdcV5Xb7FCKCPU1TxHLjKgAAAA==","w-post-2":"data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JZACdMoAB/Xp31TGeu+DmYgAA/ZtjWEAyzn35CstkvKc559X4u9epfxFQG52QgO6QRDV5m6dO2sXvxPJFb3BBmp23aIIRyoITgK0zYQ1Gz35E5TCV3SZNFUJqAnj8bDQ5OLe20vC0LTLbeoIrNXJ7V3QAAA=="};
+const lqKey = u => { const m = /([a-z0-9-]+?)(?:-\d{3,4})?\.(?:webp|jpg)(?:$|\?)/.exec(u || ''); return m && m[1]; };
+function lqApply(el) {
+  if (el.dataset.lq) return;
+  const k = lqKey(el.tagName === 'VIDEO' ? el.getAttribute('poster') : el.getAttribute('src'));
+  if (!k || !LQ[k] || (el.tagName === 'IMG' && el.complete && el.naturalWidth)) return;
+  el.dataset.lq = '1'; el.classList.add('lq');
+  el.style.backgroundImage = `url(${LQ[k]})`;
+  if (el.style.objectPosition) el.style.backgroundPosition = el.style.objectPosition;
+  if (el.tagName === 'IMG') el.addEventListener('load', () => { el.style.backgroundImage = ''; }, {once: true});
+}
+function lqAll(root) { root.querySelectorAll('img, video[poster]').forEach(lqApply); }
+lqAll(document);
+if ('MutationObserver' in window) new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType !== 1) return; if (n.matches('img, video[poster]')) lqApply(n); lqAll(n); }))).observe(document.body, {childList: true, subtree: true});
 let warmed = false;
 function warm() {
   if (warmed) return; warmed = true;
