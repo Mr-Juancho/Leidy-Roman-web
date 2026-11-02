@@ -26,8 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap">
-<link rel="preload" as="image" href="media/hero-retrato-wide-2400.webp" imagesrcset="media/hero-retrato-wide-1200.webp 1200w, media/hero-retrato-wide-2400.webp 2400w" imagesizes="(min-width:980px) 75vw, 100vw" media="(min-width:561px)">
-<link rel="preload" as="image" href="media/hero-retrato-mobile-1000.webp" imagesrcset="media/hero-retrato-mobile-640.webp 640w, media/hero-retrato-mobile-1000.webp 1000w" imagesizes="100vw" media="(max-width:560px)">
+<link rel="preload" as="image" href="media/hero-madero-1000.webp" imagesrcset="media/hero-madero-640.webp 640w, media/hero-madero-1000.webp 1000w, media/hero-madero-1400.webp 1400w" imagesizes="(min-width:980px) 42vw, (min-width:561px) 58vw, 90vw">
 <style>
 /* Layout: clinic magazine grid. Silk header; a black bento opens the page (studio portrait + two side tiles) over a running strip of credentials; then full-bleed paired panels, a silk index of treatment areas, black left/right story blocks, a full-height booking call, client experiences and a black footer. One brand look by choice: black, silk and a little gold. */
 :root{
@@ -813,13 +812,16 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .tcard h3{padding-top:0}
 .cab__fig{aspect-ratio:1}
 
-/* Art-directed studio portrait: separate wide and mobile crops, original face intact. */
-.hmain__photo{position:absolute;inset:0;display:block}
-.hmain__portrait{width:100%;height:100%;max-width:none;object-fit:cover;object-position:74% 48%}
-.hmain::after{background:linear-gradient(90deg,#171815 0%,rgba(23,24,21,.99) 30%,rgba(23,24,21,.98) 40%,rgba(23,24,21,.8) 50%,rgba(23,24,21,.45) 58%,rgba(23,24,21,.1) 67%,transparent 75%)}
-.hcopy{right:auto;width:46%;top:clamp(28px,4vw,58px)}
-.hcopy h1{font-size:clamp(36px,4vw,58px);max-width:9em;text-wrap:balance}
-.hcopy .eyebrow{max-width:26em}
+/* Editorial portrait: original white backdrop, separate copy and real treatment tools. */
+.hmain{display:grid;grid-template-columns:42% 58%;background:#fff}
+.hmain__photo{position:relative;grid-column:2;grid-row:1;display:block;min-width:0;height:100%;align-self:end}
+.hmain__portrait{width:100%;height:100%;max-width:none;object-fit:contain;object-position:center bottom}
+.hmain::after{display:none}
+.hcopy{position:relative;grid-column:1;grid-row:1;align-self:center;left:auto;right:auto;top:auto;width:auto;padding:0 0 90px clamp(24px,3vw,44px);color:var(--ink);gap:24px}
+.hcopy h1{font-size:clamp(38px,4vw,60px);line-height:1.12;max-width:8em;text-wrap:balance;text-shadow:none}
+.hcopy h1 em{color:#8a6938}
+.hcopy .eyebrow{font-size:11px;line-height:1.6;max-width:24em;letter-spacing:.08em;color:#625d54}
+.hmain .badge{left:clamp(24px,3vw,44px);right:auto;bottom:28px;width:90px;background:var(--ink);color:var(--gold-soft)}
 .care-art{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 75% 18%,#77715f 0,transparent 56%),linear-gradient(145deg,#232824,#111613);color:#d6c18e}
 .care-art::before{content:"";position:absolute;inset:12%;border:1px solid currentColor;opacity:.14;transform:rotate(-12deg);border-radius:48% 52% 60% 40%/36% 65% 35% 64%}
 .care-art::after{content:"";position:absolute;inset:-30%;background:repeating-linear-gradient(120deg,transparent 0,transparent 72px,rgba(221,204,158,.055) 73px,transparent 74px)}
@@ -841,22 +843,23 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .ncard figure>.care-art{position:absolute;inset:0}.ncard .care-art>svg{width:26%;max-width:90px;stroke-width:1}
 .ncard .care-art--social{background:linear-gradient(145deg,#e8e1d5,#c8bea9);color:#75633d}
 .ncard .care-art--location{background:radial-gradient(ellipse at 80% 20%,#747765,transparent 65%),#232923}
-@media(min-width:980px) and (max-width:1199px){.hcopy h1{font-size:43px}.hcopy{width:46%}}
+@media(min-width:980px) and (max-width:1199px){.hero__grid{height:520px}.hcopy h1{font-size:40px}.hcopy{padding-left:28px}.hcopy .eyebrow{font-size:10px}}
 .treat__frame>img{width:100%;height:100%;object-fit:cover;opacity:1;transform:none}
 .duo__card>img{width:100%;height:100%;object-fit:cover}
 .duo__card::after{background:linear-gradient(180deg,rgba(0,0,0,.62),transparent 55%)}
 @media(min-width:561px) and (max-width:979px){
  .hmain{aspect-ratio:16/10;min-width:0;width:100%}
- .hcopy{width:46%;top:32px}.hcopy h1{font-size:clamp(32px,5.2vw,46px)}
+ .hcopy{padding-bottom:70px}.hcopy h1{font-size:clamp(34px,5.2vw,48px)}
+ .hmain .badge{width:76px;bottom:20px}
 }
 @media(max-width:560px){
- .hmain{aspect-ratio:10/17;min-height:0;min-width:0;width:100%}
- .hmain__portrait{object-position:center;object-fit:cover}
- .hcopy{left:24px;right:24px;top:24px;width:auto;gap:14px}
- .hcopy h1{font-size:clamp(28px,7.6vw,38px);line-height:1.12;max-width:10.5em}
- .hcopy .eyebrow{font-size:9px;line-height:1.5;max-width:31em}
- .hmain::after{background:linear-gradient(180deg,#171815 0px,#171815 135px,rgba(23,24,21,.98) 155px,rgba(23,24,21,.72) 185px,rgba(23,24,21,.3) 215px,transparent 250px)}
- .hmain .badge{right:14px;bottom:14px;width:78px}
+ .hmain{grid-template-columns:1fr;grid-template-rows:auto auto;aspect-ratio:auto;min-height:0;min-width:0;width:100%}
+ .hcopy{grid-column:1;grid-row:1;left:auto;right:auto;top:auto;width:auto;padding:28px 26px 0;gap:15px}
+ .hcopy h1{font-size:clamp(32px,8.4vw,43px);line-height:1.1;max-width:11em;text-wrap:balance}
+ .hcopy .eyebrow{font-size:9px;line-height:1.5;max-width:30em}
+ .hmain__photo{grid-column:1;grid-row:2;width:90%;height:auto;aspect-ratio:2650/2958;justify-self:end;margin-top:8px}
+ .hmain__portrait{object-position:center bottom;object-fit:contain}
+ .hmain .badge{left:18px;right:auto;bottom:18px;width:76px}
 }
 
 </style>
@@ -916,8 +919,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
   <div class="hero__grid">
     <div class="hmain">
       <picture class="hmain__photo">
-        <source media="(max-width:560px)" srcset="media/hero-retrato-mobile-640.webp 640w, media/hero-retrato-mobile-1000.webp 1000w" sizes="100vw">
-        <img class="hmain__portrait" src="media/hero-retrato-wide-2400.webp" srcset="media/hero-retrato-wide-1200.webp 1200w, media/hero-retrato-wide-2400.webp 2400w" sizes="(min-width:980px) 75vw, 100vw" alt="Leidy Román sonriendo con traje negro en su sesión de retratos" data-i18n-alt="hero.photo" width="2400" height="1500" fetchpriority="high">
+        <img class="hmain__portrait" src="media/hero-madero-1000.webp" srcset="media/hero-madero-640.webp 640w, media/hero-madero-1000.webp 1000w, media/hero-madero-1400.webp 1400w" sizes="(min-width:980px) 42vw, (min-width:561px) 58vw, 90vw" alt="Leidy Román sonriendo con uniforme blanco y herramientas de maderoterapia" data-i18n-alt="hero.photo" width="1400" height="1563" fetchpriority="high">
       </picture>
       <div class="hcopy">
         <p class="eyebrow" data-i18n="hero.eyebrow">Estética corporal, postoperatoria y facial en Greenville, SC</p>
@@ -1181,7 +1183,7 @@ const T = {
 es: {
  'skip':'Saltar al contenido','close':'Cerrar','lang':'Idioma',
  'nav.contact':'Escríbeme por WhatsApp','nav.menuBtn':'Menú','nav.aria':'Principal','nav.postop':'Postoperatorio','nav.body':'Corporales','nav.facial':'Faciales','nav.laser':'Láser','nav.about':'Sobre Leidy','nav.academy':'Academy','nav.reviews':'Opiniones','nav.book':'Agendar',
- 'hero.photo':'Leidy Román sonriendo con traje negro en su sesión de retratos',
+ 'hero.photo':'Leidy Román sonriendo con uniforme blanco y herramientas de maderoterapia',
  'hero.eyebrow':'Estética corporal, postoperatoria y facial en Greenville, SC','hero.title':'El lujo de sentirse <em>bien en tu propia piel</em>','hero.wa':'Escríbeme por WhatsApp',
  'badge.text':'Leidy Román · Agenda ·','badge.aria':'Agendar una cita con Leidy Román',
  'treat.k':'Cuidado profesional','treat.n':'Tratamientos',
@@ -1220,7 +1222,7 @@ es: {
 en: {
  'skip':'Skip to content','close':'Close','lang':'Language',
  'nav.contact':'Message me on WhatsApp','nav.menuBtn':'Menu','nav.aria':'Main','nav.postop':'Post‑op','nav.body':'Body','nav.facial':'Facials','nav.laser':'Laser','nav.about':'About Leidy','nav.academy':'Academy','nav.reviews':'Reviews','nav.book':'Book',
- 'hero.photo':'Leidy Román smiling in a black suit during her portrait session',
+ 'hero.photo':'Leidy Román smiling in a white uniform with wood therapy tools',
  'hero.eyebrow':'Body, post‑op and facial aesthetics in Greenville, SC','hero.title':'The luxury of feeling <em>good in your own skin</em>','hero.wa':'Message me on WhatsApp',
  'badge.text':'Leidy Román · Book ·','badge.aria':'Book an appointment with Leidy Román',
  'treat.k':'Professional care','treat.n':'Treatments',
@@ -1332,8 +1334,8 @@ const TEAM = [
  {h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
 ];
 const NEWS = [
- {art:'event', icon:'i-spark', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
- {art:'location', icon:'i-pin', a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
+ {img:'media/expo-vendor-1080.webp',pos:'50% 32%',alt:{es:'Leidy Román en su stand de la Metamorphosis Expo Show',en:'Leidy Román at her Metamorphosis Expo Show booth'}, a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
+ {img:'media/n-suite-640.webp',alt:{es:'La entrada de la suite de Leidy Román en Greenville',en:'The entrance to Leidy Román’s suite in Greenville'}, a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
  {img:'media/n-detalle-640.webp',alt:{es:'Aparatología corporal sobre el abdomen',en:'Body treatment equipment on the abdomen'}, a:{es:'@leidyromanbeauty',en:'@leidyromanbeauty'}, b:'Instagram', t:{es:'Tratamientos, consejos y novedades de la cabina',en:'Treatments, tips and news from the treatment room'}, href:IG},
  {img:'media/n-letras-640.webp',alt:{es:'Detalle del espacio de Leidy Román',en:'Detail of Leidy Román’s treatment space'}, a:{es:'Leidy Román Beauty',en:'Leidy Román Beauty'}, b:'Facebook', t:{es:'Sígueme también en Facebook',en:'Follow me on Facebook too'}, href:FB}
 ];
@@ -1364,7 +1366,7 @@ function group(root) { const kids = Array.from(root.children), done = root.datas
 
 /* ---------- hero ---------- */
 function careArt(x) {
-  if (x.img) return `<img src="${x.img}" alt="${esc(L(x.alt))}" loading="lazy" decoding="async">`;
+  if (x.img) return `<img src="${x.img}" alt="${esc(L(x.alt))}"${x.pos ? ` style="object-position:${x.pos}"` : ''} loading="lazy" decoding="async">`;
   return `<span class="care-art care-art--${x.art}" aria-hidden="true"><svg viewBox="0 0 ${x.icon.startsWith('t-') ? '96 96' : '24 24'}"><use href="#${x.icon}"/></svg></span>`;
 }
 function renderPress() {
@@ -1452,14 +1454,14 @@ const REVIEW_PHOTOS = [
  ['ultimate-device', 'Leidy Román con un dispositivo de cuidado facial'],
  ['ultimate-team-spheres', 'Leidy Román con masajeadores faciales dorados'],
  ['ultimate-review-crossed-spheres', 'Leidy Román con masajeadores faciales y los brazos cruzados'],
- ['ultimate-review-white-madero', 'Leidy Román mostrando herramientas de maderoterapia']
+ ['ultimate-review-madero-profile', {es:'Leidy Román de perfil mirando un rodillo de maderoterapia',en:'Leidy Román in profile looking at a wood therapy roller'}]
 ];
 let ri = 0;
 function renderReview() {
   const r = REVIEWS[ri], tr = lang === 'en' && r.en, q = $('#rvQ'), [photo, alt] = REVIEW_PHOTOS[ri], image = $('#rvImage');
   image.srcset = `media/${photo}-640.webp 640w, media/${photo}-1080.webp 1080w`;
   image.src = `media/${photo}-1080.webp`;
-  image.alt = alt;
+  image.alt = typeof alt === 'string' ? alt : L(alt);
   q.innerHTML = `<span class="rv__mark" aria-hidden="true">“</span><blockquote><p>${esc(tr ? r.en : r.q)}</p></blockquote><p class="rv__who"><b>${esc(r.who)}</b><i>${esc(L(r.s))}</i></p><p class="rv__meta"><span class="stars" role="img" aria-label="5/5">${STAR5}</span><span>${t('rv.real')}</span>${tr ? `<span class="rv__tr">${t('rv.tr')}</span>` : ''}</p>`;
   q.classList.remove('is-in'); void q.offsetWidth; q.classList.add('is-in');
   $('#rvN').textContent = String(ri + 1).padStart(2, '0') + ' / ' + String(REVIEWS.length).padStart(2, '0');
