@@ -259,8 +259,8 @@ section[id]{scroll-margin-top:calc(var(--hd) + env(safe-area-inset-top,0px))}
 .news__track::-webkit-scrollbar{display:none}
 .ncard{scroll-snap-align:start;display:flex;flex-direction:column;text-decoration:none;color:var(--t1);min-width:0}
 .ncard figure{position:relative;aspect-ratio:357/300;overflow:hidden;background:var(--stone)}
-.ncard img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--out)}
-.ncard:hover img{filter:none;transform:scale(1.03)}
+.ncard img,.ncard video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--out)}
+.ncard:hover img,.ncard:hover video{filter:none;transform:scale(1.03)}
 .ncard__bar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:11px 24px;background:rgba(44,43,41,.94);color:#fff;font-size:14.5px}
 .ncard h3{flex:1;font:500 16px/1.5 var(--sans);padding:26px 24px 34px}
 .ncard__go{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-block:1px solid var(--t1);font:500 14.5px/1 var(--sans);text-transform:uppercase}
@@ -445,7 +445,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 /* latest: gray cards, the veil lifts on hover */
 .ncard figure::after{content:"";position:absolute;inset:0;background:rgba(19,19,19,.1);transition:opacity .3s ease-in-out;pointer-events:none}
 .ncard__bar{z-index:1}
-.ncard img{transition:transform .3s ease-in-out,filter .3s ease-in-out}
+.ncard img,.ncard video{transition:transform .3s ease-in-out,filter .3s ease-in-out}
 .ncard:hover img{transform:scale(1.05)}
 .ncard:hover figure::after{opacity:0}
 .ncard__go svg{transition:transform .3s ease-in-out}
@@ -627,7 +627,7 @@ dialog::backdrop{background:rgba(11,11,11,.55);-webkit-backdrop-filter:blur(4px)
 .cab__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 
 /* latest: color at rest, gray and closer on hover */
-.ncard img{filter:none}
+.ncard img,.ncard video{filter:none}
 .news{border-top:1px solid var(--hair)}
 .news__head .arr[hidden]{display:grid!important;visibility:hidden}
 
@@ -1297,7 +1297,7 @@ const TEAM = [
  {h:{es:'Atención personal',en:'Personal care'}, d:{es:'Te atiendo yo, en español o en inglés, y te explico cada paso antes de empezar.',en:'I see you myself, in English or Spanish, and explain every step before we begin.'}}
 ];
 const NEWS = [
- {img:'leidy-habla', alt:'Leidy Román hablando a cámara', a:{es:'Oct 2026',en:'Oct 2026'}, b:'Instagram', t:{es:'Mi historia en Historias entre Mujeres',en:'My story on Historias entre Mujeres'}, href:'https://www.instagram.com/reel/DfAQNaFjAk8/'},
+ {img:'entrevista', vid:'entrevista-clip', alt:'Leidy Román en la entrevista de Historias entre Mujeres', a:{es:'Oct 2026',en:'Oct 2026'}, b:'Instagram', t:{es:'Mi historia en Historias entre Mujeres',en:'My story on Historias entre Mujeres'}, href:'https://www.instagram.com/reel/DfAQNaFjAk8/'},
  {img:'ultimate-team-portrait', pos:'50% 12%', alt:'Retrato profesional de Leidy Román', a:{es:'Sep 2026',en:'Sep 2026'}, b:'Instagram', t:{es:'Official Vendor en la Metamorphosis Expo Show',en:'Official Vendor at the Metamorphosis Expo Show'}, href:'https://www.instagram.com/reel/DdSnqSaxH84/'},
  {img:'ultimate-madero', alt:'Leidy Román con herramientas de maderoterapia', a:{es:'Ago 2026',en:'Aug 2026'}, b:'Instagram', t:{es:'Lidero el área corporal de Essence Skin Life',en:'I lead body treatments at Essence Skin Life'}, href:'https://www.instagram.com/reel/DcW7FVcxc-R/'},
  {img:'n-suite', a:{es:'Nov 2025',en:'Nov 2025'}, b:'Instagram', t:{es:'Mi nueva suite en Greenville',en:'My new suite in Greenville'}, href:IG},
@@ -1397,8 +1397,15 @@ function renderTeam() {
 function renderSteps() { $('#steps').innerHTML = t('steps').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); group($('#steps')); }
 function renderProg() { $('#prog').innerHTML = t('prog').map(([h, d]) => `<li><b>${esc(h)}</b><span>${esc(d)}</span></li>`).join(''); }
 function renderNews() {
-  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure><img src="media/${n.img}-640.webp" alt="${esc(n.alt || '')}"${n.pos ? ` style="object-position:${n.pos}"` : ''} loading="lazy" decoding="async"><figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
+  $('#newsTrack').innerHTML = NEWS.map(n => `<a class="ncard" target="_blank" rel="noopener" href="${n.href}"><figure>${n.vid ? `<video muted loop playsinline preload="none" poster="media/${n.img}-640.webp" data-news="media/${n.vid}.mp4" aria-label="${esc(n.alt || '')}"></video>` : `<img src="media/${n.img}-640.webp" alt="${esc(n.alt || '')}"${n.pos ? ` style="object-position:${n.pos}"` : ''} loading="lazy" decoding="async">`}<figcaption class="ncard__bar"><span>${esc(L(n.a))}</span><span>${esc(n.b)}</span></figcaption></figure><h3>${esc(L(n.t))}</h3><span class="ncard__go">${t('news.go')} ${esc(n.b)}<svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>`).join('');
   newsArrows();
+  newsClips();
+}
+function newsClips() {
+  const vs = $$('#newsTrack video[data-news]');
+  if (!vs.length || RM.matches || !('IntersectionObserver' in window)) return;
+  const nio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { if (!v.getAttribute('src')) v.src = v.dataset.news; v.play().catch(() => {}); } else if (!v.paused) v.pause(); }), {threshold: .3});
+  vs.forEach(v => nio.observe(v));
 }
 function newsArrows() { const tr = $('#newsTrack'), can = tr.scrollWidth > tr.clientWidth + 4; $('#newsPrev').hidden = !can; $('#newsNext').hidden = !can; }
 function newsStep(d) { const tr = $('#newsTrack'), c = tr.querySelector('.ncard'); if (!c) return; const gap = parseFloat(getComputedStyle(tr).columnGap) || 0; tr.scrollBy({left: d * (c.getBoundingClientRect().width + gap), behavior: RM.matches ? 'auto' : 'smooth'}); }
